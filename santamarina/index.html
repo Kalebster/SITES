@@ -150,7 +150,8 @@ section{padding:96px 0}
 .panel[hidden]{display:none}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 @media (max-width:1050px){.grid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:560px){.grid{grid-template-columns:1fr}}
+@media (max-width:560px){.grid{grid-template-columns:1fr;gap:12px}}
+
 .item{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s ease,border-color .25s ease}
 .item:hover{transform:translateY(-4px);border-color:#4A3C30}
 .item figure{margin:0;position:relative;aspect-ratio:4/3;background:var(--surface-2);overflow:hidden}
@@ -163,9 +164,22 @@ section{padding:96px 0}
 .item .row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:12px}
 .price{font-family:var(--display);font-weight:800;font-size:26px;color:var(--text)}
 .price small{font-family:var(--body);font-size:12px;font-weight:700;color:var(--muted);display:block;letter-spacing:.04em;text-transform:uppercase}
-.item .btn{min-height:44px;padding:0 18px;font-size:15px}
 .ph-img{width:100%;height:100%;display:grid;place-items:center;text-align:center;color:var(--muted);font-size:14px;font-weight:700;padding:20px;border:2px dashed #4A3C30;border-radius:inherit}
 .ph-img svg{width:36px;height:36px;margin:0 auto 8px;color:#6E5D4E}
+
+@media (max-width:560px){
+  .grid .item{flex-direction:row}
+  .grid .item:hover{transform:none}
+  .grid .item figure{aspect-ratio:auto;width:118px;min-height:132px;flex:none}
+  .grid .item .body{padding:14px 14px 14px 16px;gap:4px}
+  .grid .item h3{font-size:24px}
+  .grid .item p{font-size:14px}
+  .grid .item .row{padding-top:6px}
+  .grid .price{font-size:22px}
+  .grid .tag{top:8px;left:8px;font-size:10px;padding:3px 7px}
+  .grid .ph-img{font-size:12px;padding:10px}
+  .grid .ph-img svg{width:26px;height:26px}
+}
 
 /* Diferenciais */
 .why{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:stretch}
@@ -202,7 +216,13 @@ section{padding:96px 0}
 .way h3{font-size:36px}
 .way p{color:var(--muted);font-size:15px}
 .way .btn{margin-top:auto;align-self:flex-start}
-.pending{display:inline-block;font-size:13px;font-weight:700;color:var(--amber);border:1px dashed rgba(242,163,58,.6);border-radius:10px;padding:6px 10px}
+.way .alt-link{align-self:flex-start;margin-top:-4px}
+.alt-link{font-size:14px;font-weight:700;color:var(--muted);text-underline-offset:3px;padding:6px 0}
+.alt-link:hover{color:var(--text)}
+.menu-cta{margin-top:26px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:20px 24px}
+.menu-cta p{font-size:18px;color:var(--muted)}
+.menu-cta b{color:var(--text)}
+@media (max-width:560px){.menu-cta .btn{width:100%}}
 @media (max-width:900px){.order{grid-template-columns:1fr}}
 
 /* Localização */
@@ -265,7 +285,7 @@ footer a{color:var(--muted)}
         <li><a href="#onde">Onde estamos</a></li>
       </ul>
     </nav>
-    <a class="btn btn-red" href="#pedir">Pedir agora</a>
+    <a class="btn btn-red" href="https://wa.me/5511932186222?text=Ol%C3%A1%2C%20Santa%20Marina%21%20Vi%20o%20card%C3%A1pio%20no%20site%20e%20quero%20fazer%20um%20pedido." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.2A8.5 8.5 0 1 1 20 11.5z"/></svg>Fazer pedido</a>
   </div>
 </header>
 
@@ -288,7 +308,7 @@ footer a{color:var(--muted)}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16M4 12h16M4 19h10"/></svg>
           Ver cardápio
         </a>
-        <a class="btn btn-line" href="#pedir">Fazer pedido</a>
+        <a class="btn btn-line" href="https://wa.me/5511932186222?text=Ol%C3%A1%2C%20Santa%20Marina%21%20Vi%20o%20card%C3%A1pio%20no%20site%20e%20quero%20fazer%20um%20pedido." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.2A8.5 8.5 0 1 1 20 11.5z"/></svg>Fazer pedido</a>
       </div>
       <div class="hero-meta">
         <span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.2 5.8 20.9l1.6-7L2 9.2l7.1-.6z"/></svg><b>4,9</b> no iFood · 42 avaliações</span>
@@ -312,7 +332,7 @@ footer a{color:var(--muted)}
           <span class="kicker">Cardápio</span>
           <h2 id="t-cardapio">Escolha o <span class="serif" style="color:var(--red-text)">seu</span></h2>
         </div>
-        <p>Toque na categoria e peça direto do cardápio, em poucos toques.</p>
+        <p>Veja o cardápio por categoria. Para pedir, é só chamar a Santa Marina no WhatsApp.</p>
       </div>
 
       <div class="notice">
@@ -332,22 +352,22 @@ footer a{color:var(--muted)}
           <article class="item">
             <figure><img loading="lazy" src="https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=700&h=525&q=70" width="700" height="525" alt="Hambúrguer duplo com queijo (foto ilustrativa)"><span class="tag">Exemplo</span></figure>
             <div class="body"><h3>Burger 01</h3><p>Nome, ingredientes e gramatura conforme o cardápio oficial.</p>
-              <div class="row"><span class="price"><small>Preço</small>R$ —</span><a class="btn btn-red order-link" href="#pedir">Pedir</a></div></div>
+              <div class="row"><span class="price"><small>Preço</small>R$ —</span></div></div>
           </article>
           <article class="item">
             <figure><img loading="lazy" src="https://images.unsplash.com/photo-1607013251379-e6eecfffe234?auto=format&fit=crop&w=700&h=525&q=70" width="700" height="525" alt="Hambúrguer duplo com picles sobre superfície escura (foto ilustrativa)"><span class="tag">Exemplo</span></figure>
             <div class="body"><h3>Burger 02</h3><p>Nome, ingredientes e gramatura conforme o cardápio oficial.</p>
-              <div class="row"><span class="price"><small>Preço</small>R$ —</span><a class="btn btn-red order-link" href="#pedir">Pedir</a></div></div>
+              <div class="row"><span class="price"><small>Preço</small>R$ —</span></div></div>
           </article>
           <article class="item">
             <figure><img loading="lazy" src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=700&h=525&q=70" width="700" height="525" alt="Cheeseburger com alface, tomate e cebola (foto ilustrativa)"><span class="tag">Exemplo</span></figure>
             <div class="body"><h3>Burger 03</h3><p>Nome, ingredientes e gramatura conforme o cardápio oficial.</p>
-              <div class="row"><span class="price"><small>Preço</small>R$ —</span><a class="btn btn-red order-link" href="#pedir">Pedir</a></div></div>
+              <div class="row"><span class="price"><small>Preço</small>R$ —</span></div></div>
           </article>
           <article class="item">
             <figure><img loading="lazy" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&h=525&q=70" width="700" height="525" alt="Hambúrguer com alface e tomate (foto ilustrativa)"><span class="tag">Exemplo</span></figure>
             <div class="body"><h3>Burger 04</h3><p>Nome, ingredientes e gramatura conforme o cardápio oficial.</p>
-              <div class="row"><span class="price"><small>Preço</small>R$ —</span><a class="btn btn-red order-link" href="#pedir">Pedir</a></div></div>
+              <div class="row"><span class="price"><small>Preço</small>R$ —</span></div></div>
           </article>
         </div>
       </div>
@@ -357,12 +377,12 @@ footer a{color:var(--muted)}
           <article class="item">
             <figure><img loading="lazy" src="https://images.unsplash.com/photo-1653604988538-04db8a93512a?auto=format&fit=crop&w=700&h=525&q=70" width="700" height="525" alt="Hambúrguer com batata frita em prato preto (foto ilustrativa)"><span class="tag">Exemplo</span></figure>
             <div class="body"><h3>Combo 01</h3><p>O que vem no combo conforme o cardápio oficial.</p>
-              <div class="row"><span class="price"><small>Preço</small>R$ —</span><a class="btn btn-red order-link" href="#pedir">Pedir</a></div></div>
+              <div class="row"><span class="price"><small>Preço</small>R$ —</span></div></div>
           </article>
           <article class="item">
             <figure><img loading="lazy" src="https://images.unsplash.com/photo-1662452883375-9226ea22c765?auto=format&fit=crop&w=700&h=525&q=70" width="700" height="525" alt="Hambúrguer com batatas fritas (foto ilustrativa)"><span class="tag">Exemplo</span></figure>
             <div class="body"><h3>Combo 02</h3><p>O que vem no combo conforme o cardápio oficial.</p>
-              <div class="row"><span class="price"><small>Preço</small>R$ —</span><a class="btn btn-red order-link" href="#pedir">Pedir</a></div></div>
+              <div class="row"><span class="price"><small>Preço</small>R$ —</span></div></div>
           </article>
         </div>
       </div>
@@ -372,12 +392,12 @@ footer a{color:var(--muted)}
           <article class="item">
             <figure><img loading="lazy" src="https://images.unsplash.com/photo-1691442152248-1c44043ef6e7?auto=format&fit=crop&w=700&h=525&q=70" width="700" height="525" alt="Porção de batatas fritas (foto ilustrativa)"><span class="tag">Exemplo</span></figure>
             <div class="body"><h3>Acompanhamento 01</h3><p>Porção e tamanho conforme o cardápio oficial.</p>
-              <div class="row"><span class="price"><small>Preço</small>R$ —</span><a class="btn btn-red order-link" href="#pedir">Pedir</a></div></div>
+              <div class="row"><span class="price"><small>Preço</small>R$ —</span></div></div>
           </article>
           <article class="item">
             <figure><img loading="lazy" src="https://images.unsplash.com/photo-1623238913973-21e45cced554?auto=format&fit=crop&w=700&h=525&q=70" width="700" height="525" alt="Batatas fritas em panela de ferro (foto ilustrativa)"><span class="tag">Exemplo</span></figure>
             <div class="body"><h3>Acompanhamento 02</h3><p>Porção e tamanho conforme o cardápio oficial.</p>
-              <div class="row"><span class="price"><small>Preço</small>R$ —</span><a class="btn btn-red order-link" href="#pedir">Pedir</a></div></div>
+              <div class="row"><span class="price"><small>Preço</small>R$ —</span></div></div>
           </article>
         </div>
       </div>
@@ -387,14 +407,19 @@ footer a{color:var(--muted)}
           <article class="item">
             <figure><div class="ph-img"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12l-1.5 17a2 2 0 0 1-2 1.8h-5a2 2 0 0 1-2-1.8z"/><path d="M5.5 8h13"/></svg>Foto da bebida</div></div><span class="tag">Exemplo</span></figure>
             <div class="body"><h3>Bebida 01</h3><p>Refrigerantes, sucos e outras bebidas conforme o cardápio oficial.</p>
-              <div class="row"><span class="price"><small>Preço</small>R$ —</span><a class="btn btn-red order-link" href="#pedir">Pedir</a></div></div>
+              <div class="row"><span class="price"><small>Preço</small>R$ —</span></div></div>
           </article>
           <article class="item">
             <figure><div class="ph-img"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12l-1.5 17a2 2 0 0 1-2 1.8h-5a2 2 0 0 1-2-1.8z"/><path d="M5.5 8h13"/></svg>Foto da bebida</div></div><span class="tag">Exemplo</span></figure>
             <div class="body"><h3>Bebida 02</h3><p>Refrigerantes, sucos e outras bebidas conforme o cardápio oficial.</p>
-              <div class="row"><span class="price"><small>Preço</small>R$ —</span><a class="btn btn-red order-link" href="#pedir">Pedir</a></div></div>
+              <div class="row"><span class="price"><small>Preço</small>R$ —</span></div></div>
           </article>
         </div>
+      </div>
+
+      <div class="menu-cta">
+        <p><b>Escolheu?</b> Mande o seu pedido pelo WhatsApp.</p>
+        <a class="btn btn-red" href="https://wa.me/5511932186222?text=Ol%C3%A1%2C%20Santa%20Marina%21%20Vi%20o%20card%C3%A1pio%20no%20site%20e%20quero%20fazer%20um%20pedido." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.2A8.5 8.5 0 1 1 20 11.5z"/></svg>Pedir pelo WhatsApp</a>
       </div>
     </div>
   </section>
@@ -435,7 +460,7 @@ footer a{color:var(--muted)}
           <div class="feat reveal">
             <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="17" r="2.5"/><circle cx="18" cy="17" r="2.5"/><path d="M8.5 17h7M3.5 17V9h8l3 5h4.5l1.5 3M11.5 9V6h3"/></svg></div>
             <h3>Delivery e retirada</h3>
-            <p>Peça para receber em casa ou passe para retirar. Você escolhe como prefere.</p>
+            <p>Peça pelo WhatsApp para receber em casa ou passe para retirar. Você escolhe.</p>
           </div>
         </div>
       </div>
@@ -477,17 +502,15 @@ footer a{color:var(--muted)}
         <div class="way reveal">
           <span class="n">01</span>
           <h3>Delivery</h3>
-          <p>Peça pelo iFood e receba em casa. Pedido mínimo de R$ 25 no app.</p>
-          <a class="btn btn-red" href="https://www.ifood.com.br/delivery/santo-andre-sp/santa-marina-burger-vila-camilopolis/04db5b63-66b6-4ce3-8e47-ce349896dff5" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
-            Pedir no iFood
-          </a>
+          <p>Chame no WhatsApp, faça o seu pedido e receba em casa.</p>
+          <a class="btn btn-red" href="https://wa.me/5511932186222?text=Ol%C3%A1%2C%20Santa%20Marina%21%20Quero%20fazer%20um%20pedido%20para%20delivery." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.2A8.5 8.5 0 1 1 20 11.5z"/></svg>Pedir delivery</a>
+          <a class="alt-link" href="https://www.ifood.com.br/delivery/santo-andre-sp/santa-marina-burger-vila-camilopolis/04db5b63-66b6-4ce3-8e47-ce349896dff5" target="_blank" rel="noopener">Também estamos no iFood</a>
         </div>
         <div class="way reveal">
           <span class="n">02</span>
           <h3>Retirada</h3>
-          <p>Faça o pedido e passe na loja para retirar, sem fila de entrega.</p>
-          <span class="pending">Botão do WhatsApp entra após confirmar o número oficial</span>
+          <p>Faça o pedido pelo WhatsApp e passe na loja para retirar.</p>
+          <a class="btn btn-red" href="https://wa.me/5511932186222?text=Ol%C3%A1%2C%20Santa%20Marina%21%20Quero%20fazer%20um%20pedido%20para%20retirar%20na%20loja." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.2A8.5 8.5 0 1 1 20 11.5z"/></svg>Pedir para retirar</a>
         </div>
         <div class="way reveal">
           <span class="n">03</span>
@@ -541,7 +564,7 @@ footer a{color:var(--muted)}
     <div class="wrap">
       <div class="box reveal">
         <h2>Bateu a fome? Bora de Santa Marina.</h2>
-        <a class="btn btn-dark" href="https://www.ifood.com.br/delivery/santo-andre-sp/santa-marina-burger-vila-camilopolis/04db5b63-66b6-4ce3-8e47-ce349896dff5" target="_blank" rel="noopener">Pedir no iFood</a>
+        <a class="btn btn-dark" href="https://wa.me/5511932186222?text=Ol%C3%A1%2C%20Santa%20Marina%21%20Vi%20o%20card%C3%A1pio%20no%20site%20e%20quero%20fazer%20um%20pedido." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.2A8.5 8.5 0 1 1 20 11.5z"/></svg>Pedir pelo WhatsApp</a>
       </div>
     </div>
   </section>
@@ -550,11 +573,11 @@ footer a{color:var(--muted)}
 <footer>
   <div class="wrap">
     <span>Hamburgueria Santa Marina · Rua Taubaté, 476 · Vila Camilópolis · Santo André, SP</span>
-    <span><a href="https://www.instagram.com/santamarina.burger/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.ifood.com.br/delivery/santo-andre-sp/santa-marina-burger-vila-camilopolis/04db5b63-66b6-4ce3-8e47-ce349896dff5" target="_blank" rel="noopener">iFood</a></span>
+    <span><a href="https://www.instagram.com/santamarina.burger/" target="_blank" rel="noopener">Instagram</a> · <a href="https://wa.me/5511932186222?text=Ol%C3%A1%2C%20Santa%20Marina%21%20Vi%20o%20card%C3%A1pio%20no%20site%20e%20quero%20fazer%20um%20pedido." target="_blank" rel="noopener">WhatsApp (11) 93218-6222</a> · <a href="https://www.ifood.com.br/delivery/santo-andre-sp/santa-marina-burger-vila-camilopolis/04db5b63-66b6-4ce3-8e47-ce349896dff5" target="_blank" rel="noopener">iFood</a></span>
   </div>
 </footer>
 
-<a class="btn btn-red fab" href="#pedir">Fazer pedido</a>
+<a class="btn btn-red fab" href="https://wa.me/5511932186222?text=Ol%C3%A1%2C%20Santa%20Marina%21%20Vi%20o%20card%C3%A1pio%20no%20site%20e%20quero%20fazer%20um%20pedido." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.2A8.5 8.5 0 1 1 20 11.5z"/></svg>Fazer pedido pelo WhatsApp</a>
 
 <script>
 (function(){
