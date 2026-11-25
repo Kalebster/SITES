@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cozinha Campestre | Restaurante de comida caseira em Santo André</title>
+<meta name="description" content="Buffet self-service por quilo com comida caseira, variedade e ambiente acolhedor. Almoço de segunda a sábado na Rua Porto Carrero, 285, bairro Campestre, Santo André.">
+<!-- Protótipo: fora do Google até o site oficial ir ao ar -->
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1E3A2D">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cozinha Campestre · Santo André">
+<meta property="og:description" content="Almoço caseiro, no prato que você monta. Self-service por quilo no bairro Campestre.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1773209927898-a0a7e0a13125?auto=format&fit=crop&w=1200&h=630&q=70">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Albert+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Cozinha Campestre",
+  "servesCuisine": ["Comida caseira", "Brasileira", "Self-service por quilo"],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rua Porto Carrero, 285",
+    "addressLocality": "Santo André",
+    "addressRegion": "SP",
+    "postalCode": "09070-240",
+    "addressCountry": "BR"
+  },
+  "telephone": "+55 11 4991-3582",
+  "email": "cozinhacampestre2@gmail.com",
+  "sameAs": ["https://www.instagram.com/restaurantecozinhacampestre/", "https://www.facebook.com/restaurantecozinhacampestre/"]
+}
+</script>
+<style>
+:root{
+  /* Caderno de receitas contemporâneo: creme como papel, verde-floresta como tinta,
+     madeira só em detalhes. Serifa clássica e expressiva nos títulos, sans limpa no texto.
+     Layout editorial assimétrico, com arco (janela de casa de campo) como forma recorrente. */
+  --paper:#FAF6EE;
+  --cream:#F3EDE1;
+  --sand:#E6DCCB;
+  --forest:#1E3A2D;
+  --forest-2:#27493A;
+  --ink:#1B231E;
+  --muted:#5A6157;
+  --wood:#7A5230;
+  --sage:#C9D3C4;
+  --display:"Cormorant Garamond","Cormorant",Garamond,"Times New Roman",serif;
+  --body:"Albert Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.02;margin:0;letter-spacing:-.01em;text-wrap:balance}
+em{font-style:italic}
+p{margin:0}
+.wrap{width:100%;max-width:1240px;margin:0 auto;padding:0 22px}
+:focus-visible{outline:2px solid var(--wood);outline-offset:4px;border-radius:6px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--wood)}
+.eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+
+/* Faixa de proposta */
+.proposal{background:var(--forest);color:var(--sage);font-size:13px;text-align:center;padding:8px 16px;line-height:1.4}
+.proposal b{color:var(--cream);font-weight:600}
+.proposal .short{display:none}
+@media (max-width:700px){.proposal .long{display:none}.proposal .short{display:inline}}
+
+/* Topo */
+header{position:sticky;top:0;z-index:50;background:rgba(250,246,238,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .3s}
+header.scrolled{border-color:var(--sand)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:72px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--forest)}
+.logo svg{width:34px;height:34px;flex:none}
+.logo .lt{display:flex;flex-direction:column;line-height:1}
+.logo .lt small{font-family:var(--body);font-size:10.5px;font-weight:700;letter-spacing:.32em;text-transform:uppercase}
+.logo .lt span{font-family:var(--display);font-style:italic;font-weight:600;font-size:27px;margin-top:2px}
+.nav ul{display:flex;gap:30px;list-style:none;margin:0;padding:0}
+.nav ul a{text-decoration:none;font-size:15px;font-weight:500;color:var(--muted);position:relative;padding:6px 0}
+.nav ul a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--forest);transition:right .3s ease}
+.nav ul a:hover{color:var(--forest)}
+.nav ul a:hover::after{right:0}
+@media (max-width:900px){.nav ul{display:none}}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 24px;border-radius:999px;font-family:var(--body);font-size:15.5px;font-weight:600;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background-color .25s ease,color .25s ease,border-color .25s ease}
+.btn svg{width:18px;height:18px;flex:none;transition:transform .25s ease}
+.btn:hover svg.arr{transform:translateX(4px)}
+.btn-forest{background:var(--forest);color:var(--cream)}
+.btn-forest:hover{background:var(--forest-2)}
+.btn-line{border-color:rgba(30,58,45,.35);color:var(--forest)}
+.btn-line:hover{border-color:var(--forest);background:rgba(30,58,45,.05)}
+.btn-cream{background:var(--cream);color:var(--forest)}
+.btn-cream:hover{background:#fff}
+.btn-ghost{border-color:rgba(243,237,225,.4);color:var(--cream)}
+.btn-ghost:hover{border-color:var(--cream);background:rgba(243,237,225,.08)}
+.nav .btn{min-height:44px;padding:0 18px;font-size:14.5px}
+@media (max-width:560px){.nav .btn{display:none}}
+
+/* HERO */
+.hero{padding:40px 0 88px;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center}
+.hero-copy{position:relative;z-index:2}
+.hero h1{font-size:clamp(50px,7.4vw,104px);color:var(--forest);margin-top:22px}
+.hero h1 em{display:block;color:var(--wood);font-weight:500}
+.hero .lead{font-size:clamp(17px,1.6vw,19.5px);color:var(--muted);max-width:42ch;margin-top:26px}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.facts{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:0;margin-top:46px;border-top:1px solid var(--sand);padding-top:22px}
+.facts div{padding-right:26px;margin-right:26px;border-right:1px solid var(--sand)}
+.facts div:last-child{border:0;margin:0;padding:0}
+.facts b{display:block;font-family:var(--display);font-size:28px;font-weight:600;color:var(--forest);line-height:1.1}
+.facts span{font-size:13.5px;color:var(--muted)}
+
+.hero-art{position:relative;justify-self:end;width:100%;max-width:520px}
+.arch{position:relative;aspect-ratio:4/5.2;border-radius:999px 999px 28px 28px;overflow:hidden;background:var(--sand);box-shadow:0 40px 80px -40px rgba(30,58,45,.45)}
+.arch img{width:100%;height:100%;object-fit:cover;animation:breathe 1.8s cubic-bezier(.2,.7,.2,1) both}
+@keyframes breathe{from{transform:scale(1.08);opacity:.5}to{transform:scale(1);opacity:1}}
+.arch-line{position:absolute;inset:-14px -14px 40px 40px;border:1px solid var(--wood);border-radius:999px 999px 30px 30px;opacity:.35;z-index:-1}
+.seal{position:absolute;left:-46px;top:30%;width:132px;height:132px;border-radius:50%;background:var(--cream);display:grid;place-items:center;box-shadow:0 14px 30px -14px rgba(30,58,45,.4)}
+.seal svg.ring{position:absolute;inset:0;width:100%;height:100%;animation:spin 26s linear infinite}
+.seal svg.leaf{width:34px;height:34px;color:var(--forest)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.note{position:absolute;right:-18px;bottom:36px;background:var(--forest);color:var(--cream);border-radius:18px;padding:16px 20px;max-width:230px;box-shadow:0 20px 40px -20px rgba(0,0,0,.5)}
+.note small{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--sage);font-weight:700}
+.note b{display:block;font-family:var(--display);font-size:24px;font-weight:600;line-height:1.15;margin-top:4px}
+.sprig{position:absolute;right:-60px;top:-30px;width:260px;color:var(--sage);opacity:.7;z-index:0;pointer-events:none}
+
+@media (max-width:960px){
+  .hero{padding:18px 0 64px}
+  .hero-grid{grid-template-columns:1fr;gap:34px}
+  .hero-art{order:-1;justify-self:center;max-width:440px}
+  .arch{aspect-ratio:4/3.3;border-radius:200px 200px 24px 24px}
+  .arch-line{border-radius:200px 200px 26px 26px}
+  .seal{left:-8px;top:auto;bottom:-30px;width:108px;height:108px}
+  .note{right:-6px;bottom:24px;max-width:200px;padding:14px 16px}
+  .note b{font-size:20px}
+  .facts{grid-template-columns:repeat(3,1fr)}
+  .facts div{padding-right:14px;margin-right:14px}
+  .facts b{font-size:21px;white-space:nowrap}
+  .facts span{font-size:12.5px}
+  .sprig{display:none}
+}
+
+/* Faixa de valores */
+.band{background:var(--forest);color:var(--cream);overflow:hidden}
+.band-track{display:flex;width:max-content;animation:slide 40s linear infinite}
+.band span{display:inline-flex;align-items:center;gap:28px;padding:18px 14px;font-family:var(--display);font-style:italic;font-size:26px;white-space:nowrap}
+.band span svg{width:16px;height:16px;color:var(--sage)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* Seções */
+section{padding:110px 0}
+.sec-title{font-size:clamp(40px,5.6vw,72px);color:var(--forest);margin-top:16px}
+.sec-title em{color:var(--wood)}
+.sec-lead{font-size:18px;color:var(--muted);max-width:52ch;margin-top:20px}
+@media (max-width:700px){section{padding:80px 0}}
+
+/* Apresentação */
+.about{display:grid;grid-template-columns:.9fr 1.1fr;gap:72px;align-items:start}
+.about .big{font-family:var(--display);font-size:clamp(28px,3.2vw,40px);line-height:1.25;color:var(--forest);margin-top:26px}
+.about .big em{color:var(--wood)}
+.about-text p{color:var(--muted);font-size:17.5px}
+.about-text p + p{margin-top:18px}
+.values{list-style:none;padding:0;margin:40px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--sand)}
+.values li{padding:24px 24px 24px 0;border-bottom:1px solid var(--sand)}
+.values li:nth-child(odd){border-right:1px solid var(--sand)}
+.values li:nth-child(even){padding-left:24px}
+.values b{display:flex;align-items:baseline;gap:10px;font-family:var(--display);font-size:27px;font-weight:600;color:var(--forest)}
+.values b small{font-family:var(--body);font-size:12px;font-weight:700;color:var(--wood);letter-spacing:.1em}
+.values span{display:block;color:var(--muted);font-size:15px;margin-top:4px}
+@media (max-width:900px){.about{grid-template-columns:1fr;gap:28px}}
+@media (max-width:480px){.values{grid-template-columns:1fr}.values li:nth-child(odd){border-right:0}.values li:nth-child(even){padding-left:0}}
+
+/* Buffet */
+.buffet{background:var(--cream)}
+.buffet-head{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:56px}
+@media (max-width:900px){.buffet-head{grid-template-columns:1fr;gap:10px}}
+.mosaic{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:120px;gap:16px}
+.tile{position:relative;margin:0;border-radius:22px;overflow:hidden;background:var(--sand)}
+.tile img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.tile:hover img{transform:scale(1.04)}
+.tile figcaption{position:absolute;left:14px;bottom:14px;background:rgba(250,246,238,.94);color:var(--forest);font-family:var(--display);font-style:italic;font-weight:600;font-size:20px;padding:6px 14px;border-radius:999px}
+.t1{grid-column:1 / span 7;grid-row:span 4}
+.t2{grid-column:8 / span 5;grid-row:span 2}
+.t3{grid-column:8 / span 5;grid-row:span 2}
+.t4{grid-column:1 / span 4;grid-row:span 3}
+.t5{grid-column:5 / span 4;grid-row:span 3}
+.t6{grid-column:9 / span 4;grid-row:span 3}
+@media (max-width:860px){
+  .mosaic{grid-template-columns:1fr 1fr;grid-auto-rows:150px;gap:12px}
+  .t1{grid-column:1 / -1;grid-row:span 2}
+  .t2,.t3,.t4,.t5{grid-column:auto;grid-row:span 1}
+  .t6{grid-column:1 / -1;grid-row:span 1}
+  .tile figcaption{font-size:17px;left:10px;bottom:10px;padding:4px 12px}
+}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:64px;border-top:1px solid #D6CBB8}
+.step{padding:30px 30px 0 0}
+.step + .step{padding-left:30px;border-left:1px solid #D6CBB8}
+.step .n{font-family:var(--display);font-style:italic;font-size:48px;color:var(--wood);line-height:1}
+.step h3{font-size:30px;color:var(--forest);margin-top:10px}
+.step p{color:var(--muted);font-size:15.5px;margin-top:8px;max-width:34ch}
+@media (max-width:760px){.steps{grid-template-columns:1fr}.step,.step + .step{padding:24px 0;border-left:0;border-bottom:1px solid #D6CBB8}}
+.credit{font-size:12.5px;color:#7B7F76;margin-top:30px}
+
+/* Cardápio */
+.menu-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:72px;align-items:center}
+.menu-card{position:relative;background:#fff;border-radius:6px;padding:52px 48px;box-shadow:0 30px 70px -40px rgba(30,58,45,.45);outline:1px solid var(--sand);outline-offset:-14px}
+.menu-card::before{content:"";position:absolute;inset:22px;border:1px solid var(--sand);pointer-events:none}
+.menu-card .mhead{text-align:center}
+.menu-card .mt{font-family:var(--display);font-style:italic;font-size:42px;color:var(--forest);line-height:1}
+.menu-card .ms{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--wood);font-weight:700;margin-top:10px}
+.menu-sec{margin-top:30px}
+.menu-sec h3{font-family:var(--body);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--forest);display:flex;align-items:center;gap:12px}
+.menu-sec h3::after{content:"";flex:1;height:1px;background:var(--sand)}
+.menu-sec ul{list-style:none;padding:0;margin:12px 0 0}
+.menu-sec li{display:flex;align-items:baseline;gap:10px;padding:5px 0;font-family:var(--display);font-size:21px;color:#9A9C93;font-style:italic}
+.menu-sec li::after{content:"";flex:1;border-bottom:1px dotted #CFC6B6;transform:translateY(-5px)}
+.menu-card .kilo{margin-top:30px;display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--sand);padding-top:18px}
+.menu-card .kilo span{font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--forest)}
+.menu-card .kilo b{font-family:var(--display);font-size:32px;font-weight:600;color:var(--forest)}
+.stamp{position:absolute;top:-16px;right:24px;background:var(--wood);color:#fff;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:7px 12px;border-radius:999px}
+.menu-copy .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hint{display:flex;gap:12px;align-items:flex-start;margin-top:28px;padding:14px 16px;border:1px dashed #C8BBA5;border-radius:14px;color:var(--muted);font-size:14.5px;max-width:52ch}
+.hint svg{width:20px;height:20px;flex:none;color:var(--wood);margin-top:2px}
+@media (max-width:900px){.menu-grid{grid-template-columns:1fr;gap:44px}.menu-card{padding:44px 28px}.menu-card::before{inset:16px}.menu-card{outline-offset:-10px}}
+
+/* Ambiente */
+.ambient{background:var(--forest);color:var(--cream);position:relative;overflow:hidden}
+.ambient .eyebrow{color:var(--sage)}
+.ambient .sec-title{color:var(--cream)}
+.ambient .sec-title em{color:#E2B98F}
+.ambient .sec-lead{color:#C9D3C4}
+.amb-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:64px;align-items:center}
+.amb-photos{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.amb-photos figure{margin:0;border-radius:20px;overflow:hidden;background:var(--forest-2)}
+.amb-photos img{width:100%;height:100%;object-fit:cover}
+.amb-photos .a1{grid-row:span 2;border-radius:999px 999px 20px 20px;min-height:100%}
+.amb-photos .a2,.amb-photos .a3{aspect-ratio:4/3.3}
+.amb-list{list-style:none;padding:0;margin:34px 0 0;display:grid;gap:16px}
+.amb-list li{display:flex;gap:14px;align-items:flex-start;color:#DCE3D8}
+.amb-list svg{width:22px;height:22px;flex:none;color:#E2B98F;margin-top:2px}
+.ambient .credit{color:#A9B6A5}
+@media (max-width:900px){.amb-grid{grid-template-columns:1fr;gap:40px}}
+
+/* Localização */
+.visit{display:grid;grid-template-columns:.85fr 1.15fr;gap:0;border-radius:28px;overflow:hidden;background:var(--cream);border:1px solid var(--sand)}
+.visit-info{padding:52px 48px;display:flex;flex-direction:column;gap:26px}
+.visit-info .addr{font-family:var(--display);font-size:clamp(32px,3.4vw,44px);line-height:1.1;color:var(--forest)}
+.visit-info .addr span{display:block;font-family:var(--body);font-size:16px;color:var(--muted);margin-top:10px;line-height:1.5}
+.rows{display:grid;gap:16px}
+.rows div{display:flex;gap:14px;align-items:flex-start}
+.rows svg{width:22px;height:22px;flex:none;color:var(--wood);margin-top:2px}
+.rows b{display:block;font-weight:600;color:var(--ink)}
+.rows span{color:var(--muted);font-size:15.5px}
+.rows a{color:var(--forest);font-weight:600;text-underline-offset:3px}
+.visit .btns{display:flex;flex-wrap:wrap;gap:12px}
+.map{min-height:520px;background:var(--sand)}
+.map iframe{display:block;width:100%;height:100%;min-height:520px;border:0;filter:saturate(.75) sepia(.12)}
+@media (max-width:900px){.visit{grid-template-columns:1fr}.visit-info{padding:36px 26px}.map,.map iframe{min-height:340px}}
+
+/* Chamada final */
+.final{padding:0 0 110px}
+.final .box{position:relative;overflow:hidden;border-radius:32px;background:var(--forest);color:var(--cream);display:grid;grid-template-columns:1.1fr .9fr;min-height:460px}
+.final .copy{padding:64px 56px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1}
+.final h2{font-size:clamp(46px,6.4vw,88px);line-height:.98}
+.final h2 em{color:#E2B98F;display:block}
+.final p{color:#C9D3C4;margin-top:20px;max-width:40ch;font-size:17.5px}
+.final .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.final .pic{position:relative}
+.final .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.final .pic::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--forest) 0%,rgba(30,58,45,0) 45%);z-index:1}
+@media (max-width:900px){.final .box{grid-template-columns:1fr}.final .pic{min-height:260px;order:-1}.final .pic::before{background:linear-gradient(0deg,var(--forest) 0%,rgba(30,58,45,0) 55%)}.final .copy{padding:8px 26px 44px}}
+
+/* Rodapé */
+footer{background:var(--cream);border-top:1px solid var(--sand);padding:64px 0 40px;color:var(--muted);font-size:15px}
+.foot{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:40px}
+.foot h4{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--forest);margin:0 0 14px;font-weight:700}
+.foot a{color:var(--muted);text-decoration:none}
+.foot a:hover{color:var(--forest);text-decoration:underline;text-underline-offset:3px}
+.foot ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.foot .logo{margin-bottom:16px}
+.legal{margin-top:48px;padding-top:22px;border-top:1px solid var(--sand);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:13px;color:#7B7F76}
+@media (max-width:900px){.foot{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.foot{grid-template-columns:1fr}}
+
+/* Barra de ações no celular */
+.dock{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;display:none;grid-template-columns:repeat(3,1fr);background:rgba(30,58,45,.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:20px;padding:6px;box-shadow:0 16px 40px -12px rgba(0,0,0,.45)}
+.dock a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:56px;border-radius:14px;color:var(--cream);text-decoration:none;font-size:12.5px;font-weight:600}
+.dock a:active{background:rgba(243,237,225,.12)}
+.dock svg{width:21px;height:21px}
+@media (max-width:760px){.dock{display:grid}footer{padding-bottom:110px}}
+
+/* Entrada suave (sem esconder conteúdo) */
+.js .reveal{transform:translateY(22px);transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.js .reveal.in{transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .reveal{transform:none}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+
+<div class="proposal"><span class="long"><b>Proposta de site · protótipo.</b> Fotos ilustrativas e cardápio demonstrativo, que serão trocados pelo conteúdo oficial da Cozinha Campestre.</span><span class="short"><b>Protótipo</b> · fotos ilustrativas e cardápio demonstrativo</span></div>
+
+<header id="top">
+  <div class="wrap nav">
+    <a class="logo" href="#inicio" aria-label="Cozinha Campestre, início">
+      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="20" cy="20" r="18.5"/><path d="M20 31V12"/><path d="M20 17c-4-1-6.5-3.5-7-7 4 .4 6.6 3 7 7z"/><path d="M20 22c4-1 6.5-3.5 7-7-4 .4-6.6 3-7 7z"/><path d="M20 27c-3.4-.8-5.6-3-6-6 3.4.3 5.6 2.6 6 6z"/></svg>
+      <span class="lt"><small>Cozinha</small><span>Campestre</span></span>
+    </a>
+    <nav aria-label="Principal">
+      <ul>
+        <li><a href="#casa">A casa</a></li>
+        <li><a href="#buffet">O buffet</a></li>
+        <li><a href="#cardapio">Cardápio</a></li>
+        <li><a href="#ambiente">Ambiente</a></li>
+        <li><a href="#visite">Como chegar</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-forest" href="#visite">Como chegar</a>
+  </div>
+</header>
+
+<main id="inicio">
+  <!-- HERO -->
+  <section class="hero" style="padding-top:40px" aria-labelledby="titulo">
+    <svg class="sprig" viewBox="0 0 200 260" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M100 250C96 180 104 110 140 20"/><path d="M106 200c-22-6-36-20-40-40 22 2 36 16 40 40z"/><path d="M112 150c22-8 34-24 36-44-22 4-34 20-36 44z"/><path d="M118 110c-20-8-30-22-32-40 20 4 30 18 32 40z"/><path d="M128 70c18-8 26-22 26-38-18 4-26 18-26 38z"/></svg>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Restaurante · Santo André</span>
+        <h1 id="titulo">Almoço caseiro, <em>no prato que você monta.</em></h1>
+        <p class="lead">Buffet self-service por quilo com comida caseira, variedade e um ambiente acolhedor, no bairro Campestre.</p>
+        <div class="cta">
+          <a class="btn btn-forest" href="#cardapio">Conhecer o cardápio
+            <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-line" href="#visite">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            Como chegar
+          </a>
+        </div>
+        <div class="facts">
+          <div><b>Seg a sáb</b><span>Almoço</span></div>
+          <div><b>Por quilo</b><span>Self-service</span></div>
+          <div><b>4,7 ★</b><span>Avaliações no Google</span></div>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <span class="arch-line" aria-hidden="true"></span>
+        <div class="arch">
+          <img src="https://images.unsplash.com/photo-1773209927898-a0a7e0a13125?auto=format&fit=crop&w=1000&h=1300&q=70"
+               srcset="https://images.unsplash.com/photo-1773209927898-a0a7e0a13125?auto=format&fit=crop&w=600&h=780&q=70 600w,
+                       https://images.unsplash.com/photo-1773209927898-a0a7e0a13125?auto=format&fit=crop&w=1000&h=1300&q=70 1000w"
+               sizes="(max-width:960px) 90vw, 520px" width="1000" height="1300"
+               alt="Panelas de barro com ensopado de carne e legumes (foto ilustrativa)" fetchpriority="high">
+        </div>
+        <div class="seal" aria-hidden="true">
+          <svg class="ring" viewBox="0 0 132 132"><defs><path id="circ" d="M66 66m-48 0a48 48 0 1 1 96 0a48 48 0 1 1-96 0"/></defs><text font-family="Albert Sans, sans-serif" font-size="10" font-weight="700" fill="#1E3A2D"><textPath href="#circ" textLength="298" lengthAdjust="spacing">COMIDA CASEIRA · SELF-SERVICE · CAMPESTRE ·</textPath></text></svg>
+          <svg class="leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V8"/><path d="M12 12c-3-.6-5-2.6-5.4-5.6 3 .3 5 2.4 5.4 5.6z"/><path d="M12 15.5c3-.6 5-2.6 5.4-5.6-3 .3-5 2.4-5.4 5.6z"/></svg>
+        </div>
+        <div class="note">
+          <small>Almoço</small>
+          <b>Segunda a sábado, no Campestre</b>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="band" aria-hidden="true">
+    <div class="band-track">
+      <span>Comida caseira<svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="2.2" fill="currentColor"/></svg></span><span>Variedade no buffet<svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="2.2" fill="currentColor"/></svg></span><span>Self-service por quilo<svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="2.2" fill="currentColor"/></svg></span><span>Ambiente acolhedor<svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="2.2" fill="currentColor"/></svg></span><span>Almoço de segunda a sábado<svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="2.2" fill="currentColor"/></svg></span>
+      <span>Comida caseira<svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="2.2" fill="currentColor"/></svg></span><span>Variedade no buffet<svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="2.2" fill="currentColor"/></svg></span><span>Self-service por quilo<svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="2.2" fill="currentColor"/></svg></span><span>Ambiente acolhedor<svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="2.2" fill="currentColor"/></svg></span><span>Almoço de segunda a sábado<svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="2.2" fill="currentColor"/></svg></span>
+    </div>
+  </div>
+
+  <!-- A CASA -->
+  <section id="casa" aria-labelledby="t-casa">
+    <div class="wrap about">
+      <div class="reveal">
+        <span class="eyebrow">A casa</span>
+        <h2 class="sec-title" id="t-casa">O prazer de <em>comer bem</em> no meio do dia.</h2>
+        <p class="big">Comida feita como em casa, com <em>variedade</em> para você escolher.</p>
+      </div>
+      <div class="about-text reveal">
+        <p>Na Cozinha Campestre o almoço é self-service: você passa pelo buffet, escolhe o que tem vontade e monta o prato do tamanho da sua fome.</p>
+        <p>É comida caseira, do tipo que dá vontade de repetir, servida num ambiente tranquilo para almoçar com calma, sozinho, com a família ou com o pessoal do trabalho.</p>
+        <ul class="values">
+          <li><b><small>01</small>Caseira</b><span>O sabor de comida feita em casa, no almoço de todo dia.</span></li>
+          <li><b><small>02</small>Variada</b><span>Um buffet com opções para montar o prato do seu jeito.</span></li>
+          <li><b><small>03</small>Saborosa</b><span>Pratos pensados para dar gosto de almoçar bem.</span></li>
+          <li><b><small>04</small>Acolhedora</b><span>Um lugar para fazer uma pausa de verdade no meio do dia.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUFFET -->
+  <section id="buffet" class="buffet" aria-labelledby="t-buffet">
+    <div class="wrap">
+      <div class="buffet-head">
+        <div class="reveal">
+          <span class="eyebrow">O buffet</span>
+          <h2 class="sec-title" id="t-buffet">Uma mesa farta para <em>escolher sem pressa.</em></h2>
+        </div>
+        <p class="sec-lead reveal">Saladas, pratos quentes e acompanhamentos lado a lado. O buffet muda conforme o dia, e você monta o seu prato do jeito que preferir.</p>
+      </div>
+
+      <div class="mosaic">
+        <figure class="tile t1"><img loading="lazy" src="https://images.unsplash.com/photo-1734770318259-718957e19507?auto=format&fit=crop&w=1100&h=760&q=70" width="1100" height="760" alt="Bufê de saladas com várias opções em cubas (foto ilustrativa)"><figcaption>O buffet</figcaption></figure>
+        <figure class="tile t2"><img loading="lazy" src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&h=480&q=70" width="800" height="480" alt="Salada de legumes frescos (foto ilustrativa)"><figcaption>Saladas</figcaption></figure>
+        <figure class="tile t3"><img loading="lazy" src="https://images.unsplash.com/photo-1762631383556-7fa1365898b7?auto=format&fit=crop&w=800&h=480&q=70" width="800" height="480" alt="Frango grelhado fatiado com arroz e feijão (foto ilustrativa)"><figcaption>Arroz e feijão</figcaption></figure>
+        <figure class="tile t4"><img loading="lazy" src="https://images.unsplash.com/photo-1601226809816-b8c32440158a?auto=format&fit=crop&w=700&h=560&q=70" width="700" height="560" alt="Legumes refogados em panela de ferro (foto ilustrativa)"><figcaption>Pratos quentes</figcaption></figure>
+        <figure class="tile t5"><img loading="lazy" src="https://images.unsplash.com/photo-1615937722923-67f6deaf2cc9?auto=format&fit=crop&w=700&h=560&q=70" width="700" height="560" alt="Carne grelhada em frigideira (foto ilustrativa)"><figcaption>Carnes</figcaption></figure>
+        <figure class="tile t6"><img loading="lazy" src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=700&h=560&q=70" width="700" height="560" alt="Legumes e verduras frescos (foto ilustrativa)"><figcaption>Ingredientes frescos</figcaption></figure>
+      </div>
+
+      <div class="steps">
+        <div class="step reveal"><span class="n">i.</span><h3>Pegue o prato</h3><p>Chegou, pegou o prato e começa o passeio pelo buffet.</p></div>
+        <div class="step reveal"><span class="n">ii.</span><h3>Sirva-se</h3><p>Escolha o que tem vontade, na quantidade que quiser.</p></div>
+        <div class="step reveal"><span class="n">iii.</span><h3>Pese e aproveite</h3><p>Você paga pelo peso do prato e almoça com calma.</p></div>
+      </div>
+      <p class="credit">Fotos ilustrativas do Unsplash. No site oficial entram as fotos do buffet da Cozinha Campestre.</p>
+    </div>
+  </section>
+
+  <!-- CARDÁPIO -->
+  <section id="cardapio" aria-labelledby="t-cardapio">
+    <div class="wrap menu-grid">
+      <div class="menu-card reveal" aria-label="Exemplo de cardápio do dia">
+        <span class="stamp">Demonstração</span>
+        <div class="mhead">
+          <div class="mt">Cardápio do dia</div>
+          <div class="ms">Cozinha Campestre · Almoço</div>
+        </div>
+        <div class="menu-sec"><h3>Saladas</h3><ul><li>salada do dia</li><li>salada do dia</li></ul></div>
+        <div class="menu-sec"><h3>Pratos quentes</h3><ul><li>prato do dia</li><li>prato do dia</li><li>prato do dia</li></ul></div>
+        <div class="menu-sec"><h3>Acompanhamentos</h3><ul><li>acompanhamento</li><li>acompanhamento</li></ul></div>
+        <div class="kilo"><span>Preço do quilo</span><b>R$ —</b></div>
+      </div>
+
+      <div class="menu-copy reveal">
+        <span class="eyebrow">Cardápio</span>
+        <h2 class="sec-title" id="t-cardapio">O que tem <em>hoje</em> no buffet?</h2>
+        <p class="sec-lead">O buffet muda a cada dia. Veja o cardápio de hoje e o preço do quilo nos canais oficiais da Cozinha Campestre.</p>
+        <div class="cta">
+          <a class="btn btn-forest" href="https://linktr.ee/cozinhacampestre" target="_blank" rel="noopener">Consultar o cardápio
+            <svg class="arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-line" href="https://www.instagram.com/restaurantecozinhacampestre/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>
+            Ver no Instagram
+          </a>
+        </div>
+        <p class="hint">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg>
+          <span>Espaço preparado para o cardápio do dia e o preço do quilo, que a Cozinha Campestre poderá atualizar sempre que quiser.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AMBIENTE -->
+  <section id="ambiente" class="ambient" aria-labelledby="t-amb">
+    <div class="wrap amb-grid">
+      <div class="reveal">
+        <span class="eyebrow">Ambiente</span>
+        <h2 class="sec-title" id="t-amb">Um lugar para <em>almoçar com calma.</em></h2>
+        <p class="sec-lead">Mesas na área interna e na área externa, num ambiente simples e acolhedor, do jeito que um almoço caseiro pede.</p>
+        <ul class="amb-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21V10l9-6 9 6v11"/><path d="M9 21v-6h6v6"/></svg><span>Área interna para os dias de sol forte ou de chuva.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V9"/><path d="M12 13c-3.5-.7-5.6-3-6-6.4 3.4.3 5.6 2.7 6 6.4z"/><path d="M12 17c3.5-.7 5.6-3 6-6.4-3.4.3-5.6 2.7-6 6.4z"/></svg><span>Área externa para almoçar ao ar livre.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20a6 6 0 0 1 12 0M14 20a4.5 4.5 0 0 1 7-3.7"/></svg><span>Bom para ir sozinho, com a família ou com a equipe.</span></li>
+        </ul>
+        <p class="credit">Imagens ilustrativas. No site oficial entram as fotos do salão da Cozinha Campestre.</p>
+      </div>
+      <div class="amb-photos reveal">
+        <figure class="a1"><img loading="lazy" src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?auto=format&fit=crop&w=700&h=1070&q=70" width="700" height="1070" alt="Salão com mesas de madeira e plantas penduradas (foto ilustrativa)"></figure>
+        <figure class="a2"><img loading="lazy" src="https://images.unsplash.com/photo-1643856557143-09189e523fd6?auto=format&fit=crop&w=700&h=580&q=70" width="700" height="580" alt="Área externa com mesas e cadeiras (foto ilustrativa)"></figure>
+        <figure class="a3"><img loading="lazy" src="https://images.unsplash.com/photo-1526069631228-723c945bea6b?auto=format&fit=crop&w=700&h=580&q=70" width="700" height="580" alt="Mesas sob plantas pendentes (foto ilustrativa)"></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCALIZAÇÃO -->
+  <section id="visite" aria-labelledby="t-visite">
+    <div class="wrap">
+      <div class="reveal" style="margin-bottom:44px">
+        <span class="eyebrow">Como chegar</span>
+        <h2 class="sec-title" id="t-visite">Venha almoçar no <em>Campestre.</em></h2>
+      </div>
+      <div class="visit reveal">
+        <div class="visit-info">
+          <p class="addr">Rua Porto Carrero, 285<span>Campestre · Santo André · SP<br>CEP 09070-240</span></p>
+          <div class="rows">
+            <div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              <p><b>Almoço de segunda a sábado</b><span>Self-service por quilo</span></p>
+            </div>
+            <div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+              <p><b>Telefones</b><span><a href="tel:+551149913582">(11) 4991-3582</a> · <a href="tel:+551149911525">(11) 4991-1525</a></span></p>
+            </div>
+          </div>
+          <div class="btns">
+            <a class="btn btn-forest" href="https://www.google.com/maps/search/?api=1&amp;query=Restaurante+Cozinha+Campestre%2C+Rua+Porto+Carrero%2C+285%2C+Santo+Andr%C3%A9+-+SP" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
+              Abrir no Google Maps
+            </a>
+            <a class="btn btn-line" href="https://www.google.com/maps/dir/?api=1&amp;destination=Rua+Porto+Carrero%2C+285+-+Campestre%2C+Santo+Andr%C3%A9+-+SP" target="_blank" rel="noopener">Traçar rota</a>
+          </div>
+        </div>
+        <div class="map">
+          <iframe title="Mapa: Restaurante Cozinha Campestre, Rua Porto Carrero, 285, Santo André" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Rua+Porto+Carrero%2C+285+-+Campestre%2C+Santo+Andr%C3%A9+-+SP&amp;output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAMADA FINAL -->
+  <section class="final" aria-labelledby="t-final">
+    <div class="wrap">
+      <div class="box reveal">
+        <div class="copy">
+          <h2 id="t-final">Hoje o almoço <em>é no Campestre.</em></h2>
+          <p>Passe para almoçar, ou fale com a gente antes pelo WhatsApp.</p>
+          <div class="cta">
+            <a class="btn btn-cream" href="https://wa.me/551149913582?text=Ol%C3%A1%2C%20Cozinha%20Campestre!%20Vi%20o%20site%20e%20queria%20uma%20informa%C3%A7%C3%A3o." target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.2A8.5 8.5 0 1 1 20 11.5z"/></svg>
+              Falar no WhatsApp
+            </a>
+            <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&amp;destination=Rua+Porto+Carrero%2C+285+-+Campestre%2C+Santo+Andr%C3%A9+-+SP" target="_blank" rel="noopener">Como chegar</a>
+          </div>
+        </div>
+        <div class="pic"><img loading="lazy" src="https://images.unsplash.com/photo-1547573854-74d2a71d0826?auto=format&fit=crop&w=1000&h=900&q=70" width="1000" height="900" alt="Mesa com pratos variados de comida (foto ilustrativa)"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="logo" href="#inicio" aria-label="Cozinha Campestre, voltar ao início">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="20" cy="20" r="18.5"/><path d="M20 31V12"/><path d="M20 17c-4-1-6.5-3.5-7-7 4 .4 6.6 3 7 7z"/><path d="M20 22c4-1 6.5-3.5 7-7-4 .4-6.6 3-7 7z"/><path d="M20 27c-3.4-.8-5.6-3-6-6 3.4.3 5.6 2.6 6 6z"/></svg>
+          <span class="lt"><small>Cozinha</small><span>Campestre</span></span>
+        </a>
+        <p>Comida caseira no self-service por quilo, no bairro Campestre, em Santo André.</p>
+      </div>
+      <div>
+        <h4>Endereço</h4>
+        <p>Rua Porto Carrero, 285<br>Campestre · Santo André · SP<br>CEP 09070-240</p>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="https://wa.me/551149913582" target="_blank" rel="noopener">WhatsApp (11) 4991-3582</a></li>
+          <li><a href="tel:+551149911525">(11) 4991-1525</a></li>
+          <li><a href="mailto:cozinhacampestre2@gmail.com">cozinhacampestre2@gmail.com</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Redes</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/restaurantecozinhacampestre/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.facebook.com/restaurantecozinhacampestre/" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://linktr.ee/cozinhacampestre" target="_blank" rel="noopener">Todos os links</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© Cozinha Campestre · Santo André, SP</span>
+      <span>Fotos ilustrativas: Unsplash</span>
+    </div>
+  </div>
+</footer>
+
+<nav class="dock" aria-label="Ações rápidas">
+  <a href="#cardapio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h12a4 4 0 0 1 4 4v12H8a4 4 0 0 1-4-4z"/><path d="M8 9h8M8 13h6"/></svg>Cardápio</a>
+  <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Rua+Porto+Carrero%2C+285+-+Campestre%2C+Santo+Andr%C3%A9+-+SP" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Como chegar</a>
+  <a href="https://wa.me/551149913582?text=Ol%C3%A1%2C%20Cozinha%20Campestre!%20Vi%20o%20site%20e%20queria%20uma%20informa%C3%A7%C3%A3o." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.2A8.5 8.5 0 1 1 20 11.5z"/></svg>WhatsApp</a>
+</nav>
+
+<script>
+(function(){
+  var h=document.getElementById('top');
+  function onScroll(){h.classList.toggle('scrolled',window.scrollY>8)}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -6% 0px'});
+    els.forEach(function(el){io.observe(el)});
+  }else{els.forEach(function(el){el.classList.add('in')})}
+})();
+</script>
+</body>
+</html>
