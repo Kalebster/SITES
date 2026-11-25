@@ -15,6 +15,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1773209927898-a0a7e0a13125?auto=format&fit=crop&w=1000&h=1300&q=70" imagesrcset="https://images.unsplash.com/photo-1773209927898-a0a7e0a13125?auto=format&fit=crop&w=600&h=780&q=70 600w, https://images.unsplash.com/photo-1773209927898-a0a7e0a13125?auto=format&fit=crop&w=1000&h=1300&q=70 1000w" imagesizes="(max-width:960px) 90vw, 520px">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%231E3A2D'/%3E%3Cpath d='M20 31V12M20 17c-4-1-6.5-3.5-7-7 4 .4 6.6 3 7 7zM20 22c4-1 6.5-3.5 7-7-4 .4-6.6 3-7 7z' fill='none' stroke='%23F3EDE1' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Albert+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
@@ -86,7 +88,17 @@ header.scrolled{border-color:var(--sand)}
 .nav ul a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--forest);transition:right .3s ease}
 .nav ul a:hover{color:var(--forest)}
 .nav ul a:hover::after{right:0}
-@media (max-width:900px){.nav ul{display:none}}
+.menu-btn{display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--sand);background:transparent;color:var(--forest);align-items:center;justify-content:center;cursor:pointer}
+.menu-btn svg{width:22px;height:22px}
+.nav-end{display:flex;align-items:center;gap:10px}
+@media (max-width:900px){
+  .nav ul{display:none}
+  .menu-btn{display:inline-flex}
+  .nav ul.open{display:flex;flex-direction:column;gap:0;position:absolute;top:100%;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--sand);padding:4px 22px 16px;box-shadow:0 20px 30px -20px rgba(30,58,45,.3)}
+  .nav ul.open a{display:block;padding:14px 0;font-size:18px;color:var(--forest);border-bottom:1px solid var(--sand)}
+  .nav ul.open li:last-child a{border-bottom:0}
+  .nav ul.open a::after{display:none}
+}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 24px;border-radius:999px;font-family:var(--body);font-size:15.5px;font-weight:600;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:background-color .25s ease,color .25s ease,border-color .25s ease}
 .btn svg{width:18px;height:18px;flex:none;transition:transform .25s ease}
@@ -205,7 +217,7 @@ section{padding:110px 0}
 .step h3{font-size:30px;color:var(--forest);margin-top:10px}
 .step p{color:var(--muted);font-size:15.5px;margin-top:8px;max-width:34ch}
 @media (max-width:760px){.steps{grid-template-columns:1fr}.step,.step + .step{padding:24px 0;border-left:0;border-bottom:1px solid #D6CBB8}}
-.credit{font-size:12.5px;color:#7B7F76;margin-top:30px}
+.credit{font-size:12.5px;color:#666A61;margin-top:30px}
 
 /* Cardápio */
 .menu-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:72px;align-items:center}
@@ -218,7 +230,7 @@ section{padding:110px 0}
 .menu-sec h3{font-family:var(--body);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--forest);display:flex;align-items:center;gap:12px}
 .menu-sec h3::after{content:"";flex:1;height:1px;background:var(--sand)}
 .menu-sec ul{list-style:none;padding:0;margin:12px 0 0}
-.menu-sec li{display:flex;align-items:baseline;gap:10px;padding:5px 0;font-family:var(--display);font-size:21px;color:#9A9C93;font-style:italic}
+.menu-sec li{display:flex;align-items:baseline;gap:10px;padding:5px 0;font-family:var(--display);font-size:21px;color:#73766D;font-style:italic}
 .menu-sec li::after{content:"";flex:1;border-bottom:1px dotted #CFC6B6;transform:translateY(-5px)}
 .menu-card .kilo{margin-top:30px;display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--sand);padding-top:18px}
 .menu-card .kilo span{font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--forest)}
@@ -284,15 +296,16 @@ footer{background:var(--cream);border-top:1px solid var(--sand);padding:64px 0 4
 .foot a:hover{color:var(--forest);text-decoration:underline;text-underline-offset:3px}
 .foot ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
 .foot .logo{margin-bottom:16px}
-.legal{margin-top:48px;padding-top:22px;border-top:1px solid var(--sand);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:13px;color:#7B7F76}
+.legal{margin-top:48px;padding-top:22px;border-top:1px solid var(--sand);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:13px;color:#666A61}
 @media (max-width:900px){.foot{grid-template-columns:1fr 1fr}}
 @media (max-width:520px){.foot{grid-template-columns:1fr}}
 
 /* Barra de ações no celular */
-.dock{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;display:none;grid-template-columns:repeat(3,1fr);background:rgba(30,58,45,.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:20px;padding:6px;box-shadow:0 16px 40px -12px rgba(0,0,0,.45)}
+.dock{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;display:none;transform:translateY(130%);transition:transform .45s cubic-bezier(.2,.7,.2,1);grid-template-columns:repeat(3,1fr);background:rgba(30,58,45,.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:20px;padding:6px;box-shadow:0 16px 40px -12px rgba(0,0,0,.45)}
 .dock a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:56px;border-radius:14px;color:var(--cream);text-decoration:none;font-size:12.5px;font-weight:600}
 .dock a:active{background:rgba(243,237,225,.12)}
 .dock svg{width:21px;height:21px}
+.dock.show{transform:none}
 @media (max-width:760px){.dock{display:grid}footer{padding-bottom:110px}}
 
 /* Entrada suave (sem esconder conteúdo) */
@@ -318,7 +331,7 @@ footer{background:var(--cream);border-top:1px solid var(--sand);padding:64px 0 4
       <span class="lt"><small>Cozinha</small><span>Campestre</span></span>
     </a>
     <nav aria-label="Principal">
-      <ul>
+      <ul id="menu">
         <li><a href="#casa">A casa</a></li>
         <li><a href="#buffet">O buffet</a></li>
         <li><a href="#cardapio">Cardápio</a></li>
@@ -326,7 +339,12 @@ footer{background:var(--cream);border-top:1px solid var(--sand);padding:64px 0 4
         <li><a href="#visite">Como chegar</a></li>
       </ul>
     </nav>
-    <a class="btn btn-forest" href="#visite">Como chegar</a>
+    <div class="nav-end">
+      <a class="btn btn-forest" href="#visite">Como chegar</a>
+      <button class="menu-btn" type="button" aria-controls="menu" aria-expanded="false" aria-label="Abrir menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -368,7 +386,7 @@ footer{background:var(--cream);border-top:1px solid var(--sand);padding:64px 0 4
           <svg class="ring" viewBox="0 0 132 132"><defs><path id="circ" d="M66 66m-48 0a48 48 0 1 1 96 0a48 48 0 1 1-96 0"/></defs><text font-family="Albert Sans, sans-serif" font-size="10" font-weight="700" fill="#1E3A2D"><textPath href="#circ" textLength="298" lengthAdjust="spacing">COMIDA CASEIRA · SELF-SERVICE · CAMPESTRE ·</textPath></text></svg>
           <svg class="leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V8"/><path d="M12 12c-3-.6-5-2.6-5.4-5.6 3 .3 5 2.4 5.4 5.6z"/><path d="M12 15.5c3-.6 5-2.6 5.4-5.6-3 .3-5 2.4-5.4 5.6z"/></svg>
         </div>
-        <div class="note">
+        <div class="note" id="today">
           <small>Almoço</small>
           <b>Segunda a sábado, no Campestre</b>
         </div>
@@ -565,7 +583,7 @@ footer{background:var(--cream);border-top:1px solid var(--sand);padding:64px 0 4
       <div>
         <h4>Contato</h4>
         <ul>
-          <li><a href="https://wa.me/551149913582" target="_blank" rel="noopener">WhatsApp (11) 4991-3582</a></li>
+          <li><a href="https://wa.me/551149913582?text=Ol%C3%A1%2C%20Cozinha%20Campestre!%20Vi%20o%20site%20e%20queria%20uma%20informa%C3%A7%C3%A3o." target="_blank" rel="noopener">WhatsApp (11) 4991-3582</a></li>
           <li><a href="tel:+551149911525">(11) 4991-1525</a></li>
           <li><a href="mailto:cozinhacampestre2@gmail.com">cozinhacampestre2@gmail.com</a></li>
         </ul>
@@ -597,6 +615,27 @@ footer{background:var(--cream);border-top:1px solid var(--sand);padding:64px 0 4
   var h=document.getElementById('top');
   function onScroll(){h.classList.toggle('scrolled',window.scrollY>8)}
   window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  // Menu no celular
+  var btn=document.querySelector('.menu-btn'), menu=document.getElementById('menu');
+  function setMenu(open){menu.classList.toggle('open',open);btn.setAttribute('aria-expanded',open);btn.setAttribute('aria-label',open?'Fechar menu':'Abrir menu');}
+  btn.addEventListener('click',function(){setMenu(!menu.classList.contains('open'))});
+  menu.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&menu.classList.contains('open')){setMenu(false);btn.focus();}});
+
+  // Barra de ações do celular aparece depois dos botões do topo
+  var dock=document.querySelector('.dock'), heroCta=document.querySelector('.hero .cta');
+  if('IntersectionObserver' in window && heroCta){
+    new IntersectionObserver(function(es){es.forEach(function(e){dock.classList.toggle('show',!e.isIntersecting && e.boundingClientRect.top<0)})}).observe(heroCta);
+  }else{dock.classList.add('show')}
+
+  // Cartão do topo conforme o dia (horário de Santo André)
+  try{
+    var wd=new Intl.DateTimeFormat('en-US',{timeZone:'America/Sao_Paulo',weekday:'short'}).format(new Date());
+    var t=document.getElementById('today');
+    if(wd==='Sun'){t.querySelector('small').textContent='Hoje é domingo';t.querySelector('b').textContent='O almoço volta na segunda-feira';}
+    else{t.querySelector('small').textContent='Hoje tem almoço';t.querySelector('b').textContent='Self-service por quilo, no Campestre';}
+  }catch(e){}
 
   var els=document.querySelectorAll('.reveal');
   if('IntersectionObserver' in window){
