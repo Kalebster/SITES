@@ -75,6 +75,7 @@ p{margin:0}
 .btn-linha{border-color:var(--line-forte);background:transparent;color:var(--texto)}
 .btn-linha:hover{border-color:var(--bronze);color:var(--bronze-claro)}
 .btn-topo{display:none}
+.btn-topo span{display:none}
 
 /* abas do celular */
 .abas{position:fixed;left:0;right:0;bottom:0;z-index:45;display:grid;grid-template-columns:repeat(4,1fr);height:calc(var(--abas) + var(--seguro-b));padding-bottom:var(--seguro-b);background:rgba(23,19,15,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line)}
@@ -291,6 +292,31 @@ legend{font-size:13px;color:var(--suave);padding:0 0 6px 2px}
 .campo [aria-invalid="true"]{border-color:var(--erro)}
 .privacidade{font-size:13px;color:var(--suave)}
 
+/* menu do celular */
+.menu-lista{list-style:none;margin:14px 0 0;padding:0}
+.menu-lista a{display:flex;align-items:center;min-height:54px;border-bottom:1px solid var(--line);text-decoration:none;font-size:18px}
+.menu-lista a:hover{color:var(--bronze-claro)}
+
+/* quem somos */
+.quem{display:grid;gap:28px;margin-top:28px}
+.retrato{aspect-ratio:4/5;max-width:340px;border-radius:8px;border:1px dashed var(--line-forte);background:var(--bg-2);display:grid;place-items:center;text-align:center;color:var(--suave);font-size:15px;padding:20px}
+.retrato img{width:72px;height:72px;margin:0 auto 12px}
+.provisorio{border:1px dashed var(--line-forte);border-radius:10px;padding:14px 16px;color:var(--suave);font-size:15px}
+.provisorio strong{color:var(--texto);font-weight:500}
+.nome-corretor{font-family:var(--serif);font-size:30px;line-height:1.1}
+.papel{color:var(--suave);margin-top:6px}
+.lista-simples{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.lista-simples li{padding:14px 0;border-bottom:1px solid var(--line)}
+
+/* financiamento */
+.passos{list-style:none;margin:0;padding:0;counter-reset:passo;display:grid;gap:0;border-top:1px solid var(--line)}
+.passos li{counter-increment:passo;display:grid;grid-template-columns:52px 1fr;gap:4px 12px;padding:18px 0;border-bottom:1px solid var(--line)}
+.passos li::before{content:counter(passo);grid-row:1/3;font-family:var(--serif);font-size:34px;line-height:1;color:var(--bronze)}
+.passos strong{font-weight:500;font-size:18px}
+.passos span{color:var(--suave)}
+.fin-link{display:inline-flex;align-items:center;min-height:44px;margin-top:8px;color:var(--bronze-claro);text-decoration:underline;text-underline-offset:4px;font-size:15px}
+.aviso-fin{font-size:14px;color:var(--suave)}
+
 /* janelas (dialog) */
 dialog{border:0;padding:0;color:var(--texto);background:transparent;max-width:none;max-height:none}
 dialog::backdrop{background:rgba(8,6,5,.72)}
@@ -324,7 +350,10 @@ dialog::backdrop{background:rgba(8,6,5,.72)}
   body{font-size:17px}
   .wrap{padding:0 40px}
   .nav{display:flex}
-  .btn-topo{display:inline-flex;min-height:44px;padding:0 18px;font-size:15px}
+  .btn-topo{display:inline-flex;min-height:44px;width:44px;padding:0;font-size:15px}
+  .so-cel-topo{display:none}
+  .nav{gap:0}
+  .nav a{padding:10px 10px}
   .abas{display:none}
   body.com-abas main,body.com-acao main{padding-bottom:0}
   .toast{bottom:28px}
@@ -375,7 +404,13 @@ dialog::backdrop{background:rgba(8,6,5,.72)}
   .so-cel{display:none}
   body.com-acao .acao{display:none}
   .folha{inset:0;margin:auto;width:min(520px,calc(100% - 40px));height:fit-content}
+  .quem{grid-template-columns:300px 1fr;gap:56px;align-items:start}
   .folha .caixa{border-radius:18px;border:1px solid var(--line);padding:28px}
+}
+@media (min-width:1200px){
+  .btn-topo{width:auto;padding:0 18px}
+  .btn-topo span{display:inline}
+  .nav a{padding:10px 12px}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
@@ -395,17 +430,20 @@ dialog::backdrop{background:rgba(8,6,5,.72)}
     <nav class="nav" aria-label="Principal">
       <a href="#/imoveis?fin=venda" data-nav="venda">Comprar</a>
       <a href="#/imoveis?fin=aluguel" data-nav="aluguel">Alugar</a>
-      <a href="#/imoveis?fin=aluguel&amp;tipo=galpao" data-nav="galpao">Galpões e comerciais</a>
-      <a href="#/anunciar" data-nav="anunciar">Anunciar imóvel</a>
+      <a href="#/imoveis?fin=aluguel&amp;tipo=galpao" data-nav="galpao">Galpões</a>
+      <a href="#/financiamento" data-nav="financiamento">Financiamento</a>
+      <a href="#/anunciar" data-nav="anunciar">Anunciar</a>
+      <a href="#/quem-somos" data-nav="quem-somos">Quem somos</a>
     </nav>
     <div class="topo-acoes">
       <a class="btn-icone" href="#/favoritos" aria-label="Favoritos">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7a4.3 4.3 0 0 1 7.5 2.8C19.5 15.4 12 20 12 20z"/></svg>
         <span class="selo" data-selo hidden>0</span>
       </a>
+      <button class="btn-icone so-cel-topo" type="button" data-wa="geral" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4.5 19.5l1.2-3.7A8 8 0 1 1 8.4 18.6z"/><path d="M9.2 8.6c.2-.4.5-.4.8-.4h.5c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .4-.1.6l-.5.6c.6 1.1 1.5 2 2.6 2.6l.6-.5c.2-.1.4-.2.6-.1l1.5.6c.3.1.4.3.4.5v.5c0 .3 0 .6-.4.8-.6.4-1.5.6-2.4.2a9 9 0 0 1-4.6-4.6c-.4-.9-.2-1.8.2-2.4z"/></svg></button>
       <button class="btn btn-linha btn-topo" type="button" data-wa="geral">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4.5 19.5l1.2-3.7A8 8 0 1 1 8.4 18.6z"/><path d="M9.2 8.6c.2-.4.5-.4.8-.4h.5c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .4-.1.6l-.5.6c.6 1.1 1.5 2 2.6 2.6l.6-.5c.2-.1.4-.2.6-.1l1.5.6c.3.1.4.3.4.5v.5c0 .3 0 .6-.4.8-.6.4-1.5.6-2.4.2a9 9 0 0 1-4.6-4.6c-.4-.9-.2-1.8.2-2.4z"/></svg>
-        Falar no WhatsApp
+        <span>Falar no WhatsApp</span>
       </button>
     </div>
   </div>
@@ -426,10 +464,30 @@ dialog::backdrop{background:rgba(8,6,5,.72)}
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7a4.3 4.3 0 0 1 7.5 2.8C19.5 15.4 12 20 12 20z"/></svg>Favoritos
     <span class="selo" data-selo hidden>0</span>
   </a>
-  <button type="button" data-wa="geral">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4.5 19.5l1.2-3.7A8 8 0 1 1 8.4 18.6z"/><path d="M9.2 8.6c.2-.4.5-.4.8-.4h.5c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .4-.1.6l-.5.6c.6 1.1 1.5 2 2.6 2.6l.6-.5c.2-.1.4-.2.6-.1l1.5.6c.3.1.4.3.4.5v.5c0 .3 0 .6-.4.8-.6.4-1.5.6-2.4.2a9 9 0 0 1-4.6-4.6c-.4-.9-.2-1.8.2-2.4z"/></svg>Contato
+  <button type="button" data-menu aria-haspopup="dialog">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>Menu
   </button>
 </nav>
+
+<dialog class="folha" id="folha-menu" aria-labelledby="menu-titulo">
+  <div class="caixa">
+    <h2 id="menu-titulo">Menu</h2>
+    <button class="btn-icone fechar" type="button" data-fechar aria-label="Fechar menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <ul class="menu-lista">
+      <li><a href="#/imoveis?fin=venda">Comprar</a></li>
+      <li><a href="#/imoveis?fin=aluguel">Alugar</a></li>
+      <li><a href="#/imoveis?fin=aluguel&amp;tipo=galpao">Galpões e comerciais</a></li>
+      <li><a href="#/financiamento">Financiamento</a></li>
+      <li><a href="#/anunciar">Anunciar meu imóvel</a></li>
+      <li><a href="#/quem-somos">Quem somos</a></li>
+    </ul>
+    <div class="btns">
+      <button class="btn btn-bronze" type="button" data-wa="geral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4.5 19.5l1.2-3.7A8 8 0 1 1 8.4 18.6z"/><path d="M9.2 8.6c.2-.4.5-.4.8-.4h.5c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .4-.1.6l-.5.6c.6 1.1 1.5 2 2.6 2.6l.6-.5c.2-.1.4-.2.6-.1l1.5.6c.3.1.4.3.4.5v.5c0 .3 0 .6-.4.8-.6.4-1.5.6-2.4.2a9 9 0 0 1-4.6-4.6c-.4-.9-.2-1.8.2-2.4z"/></svg>Falar no WhatsApp</button>
+    </div>
+  </div>
+</dialog>
 
 <dialog class="folha" id="folha-wa" aria-labelledby="wa-titulo">
   <div class="caixa">
@@ -868,6 +926,8 @@ function rota() {
   if (partes[0] === "imovel" && partes[1]) return { nome: "imovel", id: decodeURIComponent(partes[1]), q };
   if (partes[0] === "favoritos") return { nome: "favoritos", q };
   if (partes[0] === "anunciar") return { nome: "anunciar", q };
+  if (partes[0] === "financiamento") return { nome: "financiamento", q };
+  if (partes[0] === "quem-somos") return { nome: "quem", q };
   return { nome: "naoencontrada", q };
 }
 const rolagens = {};
@@ -881,7 +941,7 @@ function render(opts = {}) {
   document.body.classList.toggle("com-acao", r.nome === "imovel");
   document.body.classList.toggle("com-abas", r.nome !== "imovel");
   $("#acao").innerHTML = "";
-  ({ inicio: vInicio, lista: vLista, imovel: vImovel, favoritos: vFavoritos, anunciar: vAnunciar, naoencontrada: vNaoEncontrada })[r.nome](r);
+  ({ inicio: vInicio, lista: vLista, imovel: vImovel, favoritos: vFavoritos, anunciar: vAnunciar, financiamento: vFinanciamento, quem: vQuem, naoencontrada: vNaoEncontrada })[r.nome](r);
   atualizarSelos();
   marcarNav(r);
   topoHero();
@@ -897,6 +957,8 @@ function marcarNav(r) {
   let n = null;
   if (r.nome === "lista") n = tipo === "galpao" ? "galpao" : fin === "aluguel" ? "aluguel" : "venda";
   if (r.nome === "anunciar") n = "anunciar";
+  if (r.nome === "financiamento") n = "financiamento";
+  if (r.nome === "quem") n = "quem-somos";
   if (n) $(`.nav [data-nav="${n}"]`)?.setAttribute("aria-current", "page");
   const aba = r.nome === "inicio" ? "inicio" : r.nome === "lista" ? "buscar" : r.nome === "favoritos" ? "favoritos" : null;
   if (aba) $(`.abas [data-aba="${aba}"]`)?.setAttribute("aria-current", "page");
@@ -907,7 +969,7 @@ function topoHero() {
   t.classList.toggle("solido", !naHome || rolou);
 }
 window.addEventListener("scroll", topoHero, { passive: true });
-window.addEventListener("hashchange", () => { navegacoes++; render(); });
+window.addEventListener("hashchange", () => { navegacoes++; $$("dialog[open]").forEach(d => d.close()); render(); });
 
 /* ---------- busca: opções ---------- */
 const FAIXAS = {
@@ -992,6 +1054,7 @@ function vInicio() {
         <h2 id="t-sobre">Atendimento direto com o corretor</h2>
         <p>Compra, venda e locação de imóveis residenciais e comerciais em Santo André e no ABC. Você fala com quem conhece o imóvel e acompanha a negociação do começo ao fim.</p>
         <p class="creci">${CONTATO.creci}</p>
+        <a class="fin-link" href="#/quem-somos">Conheça a Brietzke</a>
       </div>
     </section>
   </div>
@@ -1042,8 +1105,10 @@ function rodape() {
         <li><a href="#/imoveis?tipo=galpao">Galpões</a></li>
         <li><a href="#/imoveis?tipo=comercial">Comerciais</a></li>
       </ul></div>
-      <div><h2>Proprietários</h2><ul>
+      <div><h2>Brietzke</h2><ul>
         <li><a href="#/anunciar">Anunciar meu imóvel</a></li>
+        <li><a href="#/financiamento">Financiamento</a></li>
+        <li><a href="#/quem-somos">Quem somos</a></li>
         <li><a href="#/favoritos">Meus favoritos</a></li>
       </ul></div>
       <div><h2>Atendimento</h2><ul>
@@ -1185,6 +1250,7 @@ function vImovel(r) {
         <div class="preco-bloco so-cel">
           <p class="preco">${precoHTML(p)}</p>
           ${taxas.length ? `<p class="taxas">${taxas.map(t => `<span>${t}</span>`).join("")}</p>` : ""}
+          ${p.fin === "venda" ? `<a class="fin-link" href="#/financiamento?imovel=${p.id}">Quer financiar? Simule com a Brietzke</a>` : ""}
         </div>
         <dl class="ficha">${ficha.map(([ic, t, v]) => `<div><dt>${ic}${t}</dt><dd>${v}</dd></div>`).join("")}</dl>
         <section class="bloco" aria-labelledby="t-desc"><h2 id="t-desc">Sobre o imóvel</h2><p>${esc(p.desc)}</p></section>
@@ -1204,6 +1270,7 @@ function vImovel(r) {
           <button class="btn btn-linha" type="button" data-duvida="${p.id}">Tirar uma dúvida</button>
           <button class="btn btn-linha" type="button" data-fav-lateral="${p.id}" aria-pressed="${ehFav(p.id)}">${I.coracao}<span>${ehFav(p.id) ? "Guardado nos favoritos" : "Guardar nos favoritos"}</span></button>
         </div>
+        ${p.fin === "venda" ? `<a class="fin-link" href="#/financiamento?imovel=${p.id}">Quer financiar? Simule com a Brietzke</a>` : ""}
         <p class="codigo">Código do imóvel: ${p.id}. ${CONTATO.creci}</p>
       </aside>
     </div>
@@ -1315,6 +1382,108 @@ function vAnunciar() {
   });
 }
 
+/* financiamento */
+const soNumeros = v => +(String(v).replace(/\D/g, "") || 0);
+function vFinanciamento(r) {
+  document.title = "Financiamento | Brietzke";
+  const im = r.q.imovel ? porId(r.q.imovel) : null;
+  const valorIni = im && im.fin === "venda" ? num.format(im.preco) : "";
+  app.innerHTML = `
+  <div class="wrap">
+    <div class="pagina">
+      <h1>Financiamento</h1>
+      <p class="intro">A Brietzke ajuda você a financiar o imóvel, da simulação à assinatura do contrato com o banco.</p>
+      <section class="bloco" aria-labelledby="t-como"><h2 id="t-como">Como funciona</h2>
+        <ol class="passos">
+          <li><strong>Simulação</strong><span>Você conta o valor do imóvel, quanto tem de entrada e a renda da família. A gente simula com os bancos.</span></li>
+          <li><strong>Documentos e análise de crédito</strong><span>Juntamos a sua documentação e enviamos para o banco aprovar o crédito.</span></li>
+          <li><strong>Avaliação do imóvel</strong><span>O banco manda um engenheiro avaliar o imóvel.</span></li>
+          <li><strong>Contrato e registro</strong><span>Você assina o contrato com o banco e o imóvel é registrado no cartório.</span></li>
+        </ol>
+      </section>
+      <section class="bloco" aria-labelledby="t-simular"><h2 id="t-simular">Simular meu financiamento</h2>
+        <p>Preencha o que souber. A Brietzke responde pelo WhatsApp com a simulação.</p>
+        <form class="form" id="form-fin" novalidate>
+          ${im ? `<p class="provisorio">Imóvel escolhido: <strong>${esc(im.id)}</strong>, ${esc(titulo(im))} em ${esc(bairroNome(im))}</p>` : ""}
+          <div class="dupla">
+            <label class="campo"><span>Valor do imóvel (R$)</span><input name="valor" inputmode="numeric" placeholder="Ex.: 450.000" value="${valorIni}" aria-describedby="e-valor" required><small class="erro-campo" id="e-valor"></small></label>
+            <label class="campo"><span>Quanto tem de entrada (R$)</span><input name="entrada" inputmode="numeric" placeholder="Ex.: 90.000"></label>
+          </div>
+          <div class="dupla">
+            <label class="campo"><span>Renda da família por mês (R$)</span><input name="renda" inputmode="numeric" placeholder="Ex.: 12.000"></label>
+            <fieldset><legend>Quer usar o FGTS?</legend><div class="radios">
+              <label><input type="radio" name="fgts" value="Sim"><span>Sim</span></label>
+              <label><input type="radio" name="fgts" value="Não"><span>Não</span></label>
+              <label><input type="radio" name="fgts" value="Não sei" checked><span>Não sei</span></label>
+            </div></fieldset>
+          </div>
+          <div class="dupla">
+            <label class="campo"><span>Seu nome</span><input name="nome" autocomplete="name" aria-describedby="e-fnome" required><small class="erro-campo" id="e-fnome"></small></label>
+            <label class="campo"><span>Seu WhatsApp</span><input name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="(11) 91234-5678" aria-describedby="e-ftel" required><small class="erro-campo" id="e-ftel"></small></label>
+          </div>
+          <p class="aviso-fin">Valores, prazo e aprovação dependem da análise do banco. Seus dados são usados só para este atendimento.</p>
+          <div><button class="btn btn-bronze" type="submit">${I.wa}Pedir simulação pelo WhatsApp</button></div>
+        </form>
+      </section>
+    </div>
+  </div>
+  ${rodape()}`;
+  const f = $("#form-fin");
+  ["valor", "entrada", "renda"].forEach(k => f[k].addEventListener("blur", () => { const n = soNumeros(f[k].value); f[k].value = n ? num.format(n) : ""; }));
+  const marca = (campo, msg) => { campo.setAttribute("aria-invalid", msg ? "true" : "false"); $("#" + campo.getAttribute("aria-describedby")).textContent = msg; };
+  f.addEventListener("submit", e => {
+    e.preventDefault();
+    const valor = soNumeros(f.valor.value), nome = f.nome.value.trim(), tel = f.tel.value.replace(/\D/g, "");
+    const telOk = tel.length >= 10 && tel.length <= 11;
+    marca(f.valor, valor ? "" : "Informe o valor do imóvel.");
+    marca(f.nome, nome ? "" : "Informe seu nome.");
+    marca(f.tel, telOk ? "" : "Informe um WhatsApp com DDD, por exemplo (11) 91234-5678.");
+    if (!valor) return f.valor.focus();
+    if (!nome) return f.nome.focus();
+    if (!telOk) return f.tel.focus();
+    const linhas = ["Olá! Quero simular um financiamento."];
+    if (im) linhas.push(`Imóvel: ${im.id}, ${titulo(im)} em ${bairroNome(im)}`);
+    linhas.push(`Valor do imóvel: ${brl(valor)}`);
+    if (soNumeros(f.entrada.value)) linhas.push(`Entrada: ${brl(soNumeros(f.entrada.value))}`);
+    if (soNumeros(f.renda.value)) linhas.push(`Renda da família: ${brl(soNumeros(f.renda.value))} por mês`);
+    linhas.push(`Usar FGTS: ${f.fgts.value}`, `Nome: ${nome}`, `WhatsApp: ${f.tel.value.trim()}`);
+    abrirWa(linhas.join("\n"));
+  });
+}
+
+/* quem somos */
+function vQuem() {
+  document.title = "Quem somos | Brietzke";
+  app.innerHTML = `
+  <div class="wrap">
+    <div class="pagina" style="max-width:none">
+      <h1>Quem somos</h1>
+      <div class="quem">
+        <div class="retrato"><div><img src="assets/brietzke-b.webp" alt="" width="72" height="72">Aqui entra uma foto do corretor</div></div>
+        <div>
+          <p class="nome-corretor">Nome do corretor</p>
+          <p class="papel">Gestor imobiliário em Santo André<br>${CONTATO.creci}</p>
+          <p class="provisorio" style="margin-top:22px"><strong>Texto provisório.</strong> Aqui entra a história da Brietzke: desde quando atua em Santo André, como começou e o jeito de trabalhar. Escrevemos juntos com as informações reais.</p>
+          <section class="bloco" aria-labelledby="t-faz"><h2 id="t-faz">O que a Brietzke faz</h2>
+            <ul class="lista-simples">
+              <li>Venda de apartamentos, casas, sobrados, coberturas e terrenos</li>
+              <li>Locação de imóveis residenciais</li>
+              <li>Galpões e imóveis comerciais, para comprar ou alugar</li>
+              <li>Ajuda com financiamento, da simulação ao contrato</li>
+              <li>Anúncio de imóveis de proprietários que querem vender ou alugar</li>
+            </ul>
+          </section>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:28px">
+            <button class="btn btn-bronze" type="button" data-wa="geral">${I.wa}Falar no WhatsApp</button>
+            <a class="btn btn-linha" href="${CONTATO.insta}" target="_blank" rel="noopener">Ver o Instagram</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  ${rodape()}`;
+}
+
 function vNaoEncontrada() {
   document.title = "Página não encontrada | Brietzke";
   app.innerHTML = `<div class="wrap"><div class="pagina vazio"><h1>Este imóvel não está mais aqui</h1><p>Ele pode ter sido vendido ou alugado. Veja os imóveis disponíveis ou fale com a Brietzke.</p><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn btn-bronze" href="#/imoveis?fin=venda">Ver imóveis</a><button class="btn btn-linha" type="button" data-wa="geral">${I.wa}Falar no WhatsApp</button></div></div></div>${rodape()}`;
@@ -1325,6 +1494,9 @@ document.addEventListener("click", e => {
   const t = e.target.closest("button, a");
   if (!t) return;
   if (t.matches("[data-fav]")) { e.preventDefault(); return alternarFav(t.dataset.fav, t); }
+  if (t.matches("[data-menu]")) return $("#folha-menu").showModal();
+  if (t.closest("#folha-menu") && t.tagName === "A") { $("#folha-menu").close(); return; }
+  if (t.closest("#folha-menu") && t.matches("[data-wa]")) $("#folha-menu").close();
   if (t.matches("[data-wa]")) return abrirWa(msgGeral());
   if (t.matches("[data-visita]")) return abrirWa(msgVisita(porId(t.dataset.visita)));
   if (t.matches("[data-duvida]")) return abrirWa(msgDuvida(porId(t.dataset.duvida)));
