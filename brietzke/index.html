@@ -42,6 +42,7 @@ a{color:inherit}
 button,input,select,textarea{font:inherit;color:inherit}
 button{cursor:pointer}
 :focus-visible{outline:2px solid var(--bronze-claro);outline-offset:3px;border-radius:4px}
+[hidden]{display:none!important}
 .sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .wrap{width:100%;max-width:1240px;margin:0 auto;padding:0 20px}
 h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;letter-spacing:-.01em;margin:0}
@@ -138,6 +139,9 @@ body.com-acao .abas{display:none}
 .etiquetas{position:absolute;left:12px;top:12px;display:flex;gap:6px;z-index:2;pointer-events:none}
 .etq{background:rgba(23,19,15,.82);color:var(--texto);font-size:13px;line-height:1;padding:7px 10px;border-radius:999px}
 .etq.novo{background:var(--bronze);color:var(--sobre-bronze)}
+.etq.selo{background:var(--texto);color:var(--sobre-bronze);font-weight:500}
+.card.fechado .card-img svg{filter:grayscale(.7) brightness(.72)}
+.acao.so-um{grid-template-columns:1fr}
 .fav{position:absolute;right:8px;top:8px;z-index:2;width:44px;height:44px;display:grid;place-items:center;border:0;border-radius:50%;background:rgba(23,19,15,.7);color:var(--texto)}
 .fav svg{width:22px;height:22px}
 .fav[aria-pressed="true"]{color:var(--bronze-claro)}
@@ -292,6 +296,62 @@ legend{font-size:13px;color:var(--suave);padding:0 0 6px 2px}
 .campo [aria-invalid="true"]{border-color:var(--erro)}
 .privacidade{font-size:13px;color:var(--suave)}
 
+/* fotos reais */
+img.foto{width:100%;height:100%;object-fit:cover;display:block}
+.visor .slide img.foto{object-fit:contain;max-height:100%}
+
+/* painel (demonstração) */
+body.no-painel .topo,body.no-painel .abas{display:none}
+.pn-topo{position:sticky;top:0;z-index:40;background:rgba(23,19,15,.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.pn-topo .wrap{display:flex;align-items:center;gap:12px;min-height:60px}
+.pn-topo strong{font-weight:500;font-size:18px}
+.pn-topo img{width:32px;height:32px}
+.pn-topo a{margin-left:auto;color:var(--bronze-claro);font-size:15px;min-height:44px;display:inline-flex;align-items:center;text-underline-offset:4px}
+.pn{max-width:640px;margin:0 auto;padding:22px 0 48px}
+.pn h1{font-size:30px}
+.pn-demo{margin-top:14px;font-size:14px}
+.pn-novo{width:100%;margin-top:20px}
+.pn-lista{list-style:none;margin:20px 0 0;padding:0;border-top:1px solid var(--line)}
+.pn-lista li{position:relative;display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.pn-lista .mini{width:64px;height:48px;border-radius:4px;overflow:hidden}
+.pn-lista .mini svg{width:100%;height:100%}
+.pn-lista b{display:block;font-weight:500;font-size:15px;line-height:1.3}
+.pn-lista small{color:var(--suave);font-size:13px}
+.pn-lista a.cobre{position:absolute;inset:0}
+.st{font-size:12px;padding:5px 9px;border-radius:999px;border:1px solid var(--line-forte);color:var(--suave);white-space:nowrap}
+.st.ok{border-color:#5E7A55;color:#B9D3AE}
+.pn-grupo{margin-top:26px;padding-top:22px;border-top:1px solid var(--line);display:grid;gap:14px}
+.pn-grupo h2{font-family:var(--sans);font-size:18px;font-weight:500;letter-spacing:0}
+.pn-grupo .ajuda{color:var(--suave);font-size:14px;margin-top:-8px}
+.add-fotos{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:120px;border:1.5px dashed var(--line-forte);border-radius:12px;color:var(--texto);font-size:16px;cursor:pointer;text-align:center;padding:16px}
+.add-fotos small{color:var(--suave);font-size:13px}
+.add-fotos svg{width:28px;height:28px;color:var(--bronze)}
+input:focus-visible + .add-fotos{outline:2px solid var(--bronze-claro);outline-offset:3px}
+.fotos-grade{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.fotos-grade:empty{display:none}
+.mini-foto{position:relative;aspect-ratio:1;border-radius:8px;overflow:hidden;border:0;padding:0;background:var(--bg-2)}
+.mini-foto img{width:100%;height:100%;object-fit:cover}
+.mini-foto .capa{position:absolute;left:6px;bottom:6px;background:var(--bronze);color:var(--sobre-bronze);font-size:12px;padding:4px 8px;border-radius:999px}
+.mini-foto .tirar{position:absolute;right:4px;top:4px;width:40px;height:40px;border-radius:50%;border:0;background:rgba(23,19,15,.8);color:var(--texto);display:grid;place-items:center}
+.mini-foto .tirar svg{width:18px;height:18px}
+.tres{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.chave{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:56px;padding:6px 0;cursor:pointer}
+.chave span b{display:block;font-weight:500}
+.chave span small{color:var(--suave);font-size:14px}
+.chave input{appearance:none;-webkit-appearance:none;flex:none;width:52px;height:32px;border-radius:999px;background:var(--bg-3);border:1px solid var(--line-forte);position:relative;margin:0;cursor:pointer;transition:background .15s}
+.chave input::after{content:"";position:absolute;left:3px;top:3px;width:24px;height:24px;border-radius:50%;background:var(--suave);transition:transform .15s,background .15s}
+.chave input:checked{background:var(--bronze);border-color:var(--bronze)}
+.chave input:checked::after{transform:translateX(20px);background:var(--sobre-bronze)}
+.radios.coluna{flex-direction:column;align-items:stretch}
+.radios.coluna span{width:100%;min-height:52px}
+.pn-publicar{position:sticky;bottom:0;padding:12px 0 calc(12px + var(--seguro-b));background:linear-gradient(to top,var(--bg) 70%,rgba(23,19,15,0));margin-top:18px}
+.pn-publicar .btn{width:100%;min-height:54px;font-size:17px}
+.pn-ok{text-align:center;padding-top:40px}
+.pn-ok .marca-ok{width:64px;height:64px;border-radius:50%;background:var(--bronze);color:var(--sobre-bronze);display:grid;place-items:center;margin:0 auto 18px}
+.pn-ok .marca-ok svg{width:32px;height:32px}
+.pn-ok p{color:var(--suave);margin-top:10px}
+.pn-ok .btns{display:grid;gap:10px;margin-top:26px}
+
 /* menu do celular */
 .menu-lista{list-style:none;margin:14px 0 0;padding:0}
 .menu-lista a{display:flex;align-items:center;min-height:54px;border-bottom:1px solid var(--line);text-decoration:none;font-size:18px}
@@ -393,6 +453,9 @@ dialog::backdrop{background:rgba(8,6,5,.72)}
   .mosaico{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:8px;height:min(62vh,560px);border-radius:10px;overflow:hidden}
   .mosaico button{border:0;padding:0;background:var(--bg-2);overflow:hidden;position:relative}
   .mosaico button:first-child{grid-row:1/3}
+  .mosaico.m1{grid-template-columns:1fr;grid-template-rows:1fr}
+  .mosaico.m1 button:first-child{grid-row:auto}
+  .mosaico.m2 button:nth-child(2){grid-row:1/3}
   .mosaico svg{width:100%;height:100%}
   .mosaico .ver-todas{position:absolute;right:12px;bottom:12px;background:rgba(23,19,15,.85);padding:10px 14px;border-radius:999px;font-size:14px}
   .gal-sobre{inset:12px 12px auto auto}
@@ -534,7 +597,8 @@ const BAIRROS = {
   "vila-assuncao": { n: "Vila Assunção", c: [-23.6680, -46.5190] },
   "vila-gilda": { n: "Vila Gilda", c: [-23.6470, -46.5230] },
   "utinga": { n: "Utinga", c: [-23.6265, -46.5265] },
-  "casa-branca": { n: "Casa Branca", c: [-23.6395, -46.5175] }
+  "casa-branca": { n: "Casa Branca", c: [-23.6395, -46.5175] },
+  "serraria": { n: "Serraria", cid: "Diadema", c: [-23.6935, -46.6075] }
 };
 
 const TIPOS = {
@@ -587,7 +651,20 @@ const IMOVEIS = [
     desc:"Galpão de 1.200 m² em Utinga, com pé-direito de 10 m, duas docas, escritórios e vestiários. Acesso para carretas." },
   { id:"BZ-3005", fin:"aluguel", tipo:"galpao", bairro:"casa-branca", preco:15500, iptu:1100, area:650, quartos:0, suites:0, banheiros:2, vagas:4, pe:8, docas:1, energia:"75 kVA",
     carac:["Escritório","Portão alto","Rua de fácil acesso"],
-    desc:"Galpão de 650 m² na Casa Branca, com pé-direito de 8 m, uma doca e escritório. Rua de fácil acesso para caminhões." }
+    desc:"Galpão de 650 m² na Casa Branca, com pé-direito de 8 m, uma doca e escritório. Rua de fácil acesso para caminhões." },
+  { id:"BZ-3011", fin:"aluguel", tipo:"galpao", bairro:"serraria", preco:22000, iptu:1500, area:900, quartos:0, suites:0, banheiros:2, vagas:6, pe:9, docas:2, energia:"100 kVA",
+    carac:["Pátio de manobra","Escritório","Perto da Rodovia dos Imigrantes"],
+    desc:"Galpão de 900 m² na Serraria, em Diadema, com pé-direito de 9 m, duas docas e pátio de manobra." },
+  /* negócios fechados: com selo ficam no site; sem selo somem */
+  { id:"BZ-0981", fin:"venda", tipo:"apartamento", bairro:"vila-bastos", st:"vendido", selo:true, preco:690000, cond:900, iptu:190, area:86, quartos:3, suites:1, banheiros:2, vagas:2,
+    carac:["Varanda","Piscina","Portaria 24 h"],
+    desc:"Apartamento de 86 m² na Vila Bastos, com três quartos (um suíte) e duas vagas." },
+  { id:"BZ-0975", fin:"aluguel", tipo:"casa", bairro:"jardim", st:"alugado", selo:true, preco:3800, iptu:200, area:140, quartos:3, suites:1, banheiros:2, vagas:2,
+    carac:["Quintal","Churrasqueira"],
+    desc:"Casa de 140 m² no bairro Jardim, com três quartos e quintal com churrasqueira." },
+  { id:"BZ-0990", fin:"venda", tipo:"sobrado", bairro:"campestre", st:"vendido", selo:false, preco:890000, iptu:300, area:160, quartos:3, suites:1, banheiros:3, vagas:2,
+    carac:["Quintal","Lavanderia"],
+    desc:"Sobrado de 160 m² no Campestre." }
 ];
 
 /* ---------- utilidades ---------- */
@@ -613,7 +690,11 @@ function titulo(p) {
   return `${TIPOS[p.tipo]} com ${p.quartos} ${p.quartos === 1 ? "quarto" : "quartos"}`;
 }
 const bairroNome = p => BAIRROS[p.bairro].n;
-const local = p => `${bairroNome(p)}, Santo André`;
+const cidade = p => BAIRROS[p.bairro].cid || "Santo André";
+const local = p => `${bairroNome(p)}, ${cidade(p)}`;
+const ativos = () => IMOVEIS.filter(p => !p.st);
+const visivel = p => !!p && (!p.st || p.selo);
+const PALAVRA = { vendido: "Vendido", alugado: "Alugado" };
 const porId = id => IMOVEIS.find(p => p.id === id);
 
 /* ---------- ícones ---------- */
@@ -766,6 +847,7 @@ function planta(p, r, W, H) {
 
 let idArte = 0;
 function arte(p, v = 0) {
+  if (p.fotos && p.fotos[v]) return `<img src="${p.fotos[v]}" alt="Foto ${v + 1}: ${esc(titulo(p))}" class="foto" decoding="async">`;
   const W = 400, H = 300, id = ++idArte, r = rng(p.id + ":" + v);
   let corpo;
   if (v === 1) corpo = planta(p, r, W, H);
@@ -782,6 +864,9 @@ function arte(p, v = 0) {
   return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Ilustração: ${esc(titulo(p))}">${corpo}</svg>`;
 }
 const VISTAS = ["Fachada", "Planta", "Detalhe da fachada", "Vista do bairro"];
+const nImg = p => (p.fotos && p.fotos.length) || VISTAS.length;
+const nomeImg = (p, i) => p.fotos && p.fotos.length ? `Foto ${i + 1}` : VISTAS[i];
+const selo_ilustr = p => p.fotos && p.fotos.length ? "" : '<span class="ilustr" aria-hidden="true">Imagem ilustrativa</span>';
 
 function skyline() {
   const W = 1440, H = 520, r = rng("brietzke-hero"), base = H;
@@ -806,7 +891,7 @@ function skyline() {
 /* ---------- favoritos ---------- */
 const CHAVE = "brietzke:favoritos";
 let favs = [];
-try { favs = JSON.parse(localStorage.getItem(CHAVE) || "[]").filter(porId); } catch (e) { favs = []; }
+try { favs = JSON.parse(localStorage.getItem(CHAVE) || "[]").filter(id => visivel(porId(id))); } catch (e) { favs = []; }
 function salvarFavs() { try { localStorage.setItem(CHAVE, JSON.stringify(favs)); } catch (e) {} atualizarSelos(); }
 const ehFav = id => favs.includes(id);
 function atualizarSelos() { $$("[data-selo]").forEach(el => { el.textContent = favs.length; el.hidden = favs.length === 0; }); }
@@ -830,11 +915,23 @@ function specs(p) {
   return `<div class="specs">${it.join("")}</div>`;
 }
 function cartao(p, nivel = "h3") {
+  if (p.st) return `<article class="card fechado">
+    <div class="card-img">${arte(p)}
+      <div class="etiquetas"><span class="etq selo">${PALAVRA[p.st]}</span></div>
+      ${selo_ilustr(p)}
+    </div>
+    <div class="card-info">
+      <${nivel}>${esc(titulo(p))}</${nivel}>
+      <p class="local">${esc(local(p))}</p>
+      ${specs(p)}
+    </div>
+    <a class="cobre" href="#/imovel/${p.id}" aria-label="${PALAVRA[p.st]}: ${esc(titulo(p))} em ${esc(bairroNome(p))}"></a>
+  </article>`;
   return `<article class="card">
     <div class="card-img">${arte(p)}
       <div class="etiquetas"><span class="etq">${p.fin === "venda" ? "Venda" : "Aluguel"}</span>${p.novo ? '<span class="etq novo">Novo</span>' : ""}</div>
       ${btnFav(p)}
-      <span class="ilustr" aria-hidden="true">Imagem ilustrativa</span>
+      ${selo_ilustr(p)}
     </div>
     <div class="card-info">
       <p class="preco">${precoHTML(p)}</p>
@@ -928,6 +1025,7 @@ function rota() {
   if (partes[0] === "anunciar") return { nome: "anunciar", q };
   if (partes[0] === "financiamento") return { nome: "financiamento", q };
   if (partes[0] === "quem-somos") return { nome: "quem", q };
+  if (partes[0] === "painel") return { nome: "painel", q };
   return { nome: "naoencontrada", q };
 }
 const rolagens = {};
@@ -939,9 +1037,10 @@ function render(opts = {}) {
   fecharMapa();
   const r = rota();
   document.body.classList.toggle("com-acao", r.nome === "imovel");
-  document.body.classList.toggle("com-abas", r.nome !== "imovel");
+  document.body.classList.toggle("com-abas", r.nome !== "imovel" && r.nome !== "painel");
+  document.body.classList.toggle("no-painel", r.nome === "painel");
   $("#acao").innerHTML = "";
-  ({ inicio: vInicio, lista: vLista, imovel: vImovel, favoritos: vFavoritos, anunciar: vAnunciar, financiamento: vFinanciamento, quem: vQuem, naoencontrada: vNaoEncontrada })[r.nome](r);
+  ({ inicio: vInicio, lista: vLista, imovel: vImovel, favoritos: vFavoritos, anunciar: vAnunciar, financiamento: vFinanciamento, quem: vQuem, painel: vPainel, naoencontrada: vNaoEncontrada })[r.nome](r);
   atualizarSelos();
   marcarNav(r);
   topoHero();
@@ -979,17 +1078,19 @@ const FAIXAS = {
 const opt = (v, t, sel) => `<option value="${v}"${String(sel ?? "") === String(v) ? " selected" : ""}>${t}</option>`;
 const optsTipo = (sel, vazio = "Todos") => opt("", vazio, sel) + Object.entries(TIPOS).map(([k, v]) => opt(k, v, sel)).join("");
 const bairrosOrdenados = () => Object.entries(BAIRROS).sort((a, b) => a[1].n.localeCompare(b[1].n, "pt-BR"));
-const optsBairro = (sel, vazio = "Todos") => opt("", vazio, sel) + bairrosOrdenados().map(([k, v]) => opt(k, v.n, sel)).join("");
+const optsBairro = (sel, vazio = "Todos") => opt("", vazio, sel) + bairrosOrdenados().map(([k, v]) => opt(k, v.cid ? `${v.n} (${v.cid})` : v.n, sel)).join("");
 const optsPreco = (fin, sel, vazio = "Qualquer valor") => opt("", vazio, sel) + FAIXAS[fin].map(([v, t]) => opt(v, t, sel)).join("");
 
 /* ---------- telas ---------- */
 function vInicio() {
   document.title = "Brietzke Gestor Imobiliário | Imóveis em Santo André";
-  const venda = IMOVEIS.filter(p => p.fin === "venda" && p.tipo !== "galpao").slice(0, 6);
-  const aluguel = IMOVEIS.filter(p => p.fin === "aluguel" && !["galpao", "comercial"].includes(p.tipo));
-  const neg = IMOVEIS.filter(p => p.tipo === "galpao" || p.tipo === "comercial");
+  const destaqueAntes = (a, b) => (b.destaque ? 1 : 0) - (a.destaque ? 1 : 0);
+  const venda = ativos().filter(p => p.fin === "venda" && p.tipo !== "galpao").sort(destaqueAntes).slice(0, 6);
+  const aluguel = ativos().filter(p => p.fin === "aluguel" && !["galpao", "comercial"].includes(p.tipo)).sort(destaqueAntes);
+  const neg = ativos().filter(p => p.tipo === "galpao" || p.tipo === "comercial");
+  const fechados = IMOVEIS.filter(p => p.st && p.selo);
   const contagem = {};
-  IMOVEIS.forEach(p => contagem[p.bairro] = (contagem[p.bairro] || 0) + 1);
+  ativos().forEach(p => contagem[p.bairro] = (contagem[p.bairro] || 0) + 1);
   const bairros = Object.entries(contagem).sort((a, b) => b[1] - a[1]);
 
   app.innerHTML = `
@@ -1036,6 +1137,12 @@ function vInicio() {
       <p class="secao-sub">Espaços para indústria, logística e comércio em Santo André e no ABC.</p>
       <div class="linhas">${neg.map(linhaNeg).join("")}</div>
     </section>
+
+    ${fechados.length ? `<section class="secao" aria-labelledby="t-fechados">
+      <div class="secao-cab"><h2 id="t-fechados">Negócios fechados</h2></div>
+      <p class="secao-sub">Alguns imóveis que a Brietzke já vendeu ou alugou.</p>
+      <div class="trilho">${fechados.map(p => cartao(p)).join("")}</div>
+    </section>` : ""}
 
     <section class="chamada" aria-labelledby="t-anunciar">
       <div>
@@ -1123,7 +1230,7 @@ function rodape() {
 /* lista com filtros */
 const ORDENS = { recentes: "Mais recentes", menor: "Menor valor", maior: "Maior valor", area: "Maior área" };
 function filtrar(q) {
-  let l = IMOVEIS.filter(p =>
+  let l = ativos().filter(p =>
     (!q.fin || p.fin === q.fin) &&
     (!q.tipo || p.tipo === q.tipo) &&
     (!q.bairro || p.bairro === q.bairro) &&
@@ -1209,9 +1316,12 @@ function vLista(r) {
 function vImovel(r) {
   const p = porId(r.id);
   if (!p) return vNaoEncontrada();
+  if (p.st && !p.selo) return vIndisponivel(p);
+  const fechado = !!p.st;
   document.title = `${titulo(p)} em ${bairroNome(p)} | Brietzke`;
-  const slides = VISTAS.map((v, i) => `<button class="slide" type="button" data-abrir="${i}" aria-label="Ampliar imagem ${i + 1} de ${VISTAS.length}: ${v}">${arte(p, i)}</button>`).join("");
-  const mosaico = [0, 1, 2].map(i => `<button type="button" data-abrir="${i}" aria-label="Ampliar imagem ${i + 1}: ${VISTAS[i]}">${arte(p, i)}${i === 2 ? `<span class="ver-todas">Ver as ${VISTAS.length} imagens</span>` : ""}</button>`).join("");
+  const n = nImg(p), nm = Math.min(3, n);
+  const slides = Array.from({ length: n }, (_, i) => `<button class="slide" type="button" data-abrir="${i}" aria-label="Ampliar imagem ${i + 1} de ${n}: ${nomeImg(p, i)}">${arte(p, i)}</button>`).join("");
+  const mosaico = Array.from({ length: nm }, (_, i) => `<button type="button" data-abrir="${i}" aria-label="Ampliar imagem ${i + 1}: ${nomeImg(p, i)}">${arte(p, i)}${i === nm - 1 && n > 1 ? `<span class="ver-todas">Ver as ${n} imagens</span>` : ""}</button>`).join("");
   const ficha = [];
   ficha.push([I.area, "Área", `${num.format(p.area)} m²`]);
   if (p.tipo === "galpao") { ficha.push([I.altura, "Pé-direito", `${p.pe} m`], [I.doca, "Docas", p.docas], [I.raio, "Energia", p.energia]); }
@@ -1223,46 +1333,53 @@ function vImovel(r) {
   }
   if (p.tipo !== "terreno") ficha.push([I.carro, "Vagas", p.vagas || "Sem vaga"]);
   const taxas = [p.cond ? `Condomínio ${brl(p.cond)}` : "", p.iptu ? `IPTU ${brl(p.iptu)}${p.fin === "venda" ? "/ano" : "/mês"}` : ""].filter(Boolean);
-  const similares = IMOVEIS.filter(x => x.id !== p.id && x.fin === p.fin && (x.tipo === p.tipo || x.bairro === p.bairro)).slice(0, 3);
+  const similares = parecidos(p);
 
   app.innerHTML = `
   <div class="wrap">
     <div class="galeria">
       <div class="slides" id="slides">${slides}</div>
-      <div class="mosaico">${mosaico}</div>
+      <div class="mosaico m${nm}">${mosaico}</div>
       <div class="gal-sobre">
         <button class="btn-icone voltar" type="button" data-voltar aria-label="Voltar">${I.voltar}</button>
         <div class="grupo">
           <button class="btn-icone" type="button" data-compartilhar aria-label="Compartilhar">${I.compartilhar}</button>
-          <span class="so-cel">${btnFav(p)}</span>
+          ${fechado ? "" : `<span class="so-cel">${btnFav(p)}</span>`}
         </div>
       </div>
-      <span class="contador" id="contador" aria-hidden="true">1 de ${VISTAS.length}</span>
+      <span class="contador" id="contador" aria-hidden="true">1 de ${n}</span>
     </div>
 
     <div class="imovel-corpo">
       <div>
         <header class="imovel-cab">
-          <p class="tipo">${TIPOS[p.tipo]} ${p.fin === "venda" ? "à venda" : "para alugar"}</p>
+          <p class="tipo">${fechado ? `${TIPOS[p.tipo]} ${p.st} pela Brietzke` : `${TIPOS[p.tipo]} ${p.fin === "venda" ? "à venda" : "para alugar"}`}</p>
           <h1>${esc(titulo(p))}</h1>
           <p class="local">${esc(local(p))}</p>
         </header>
-        <div class="preco-bloco so-cel">
+        ${fechado
+          ? `<div class="preco-bloco so-cel"><p class="preco">${PALAVRA[p.st]}</p><p class="taxas">Este imóvel já foi ${p.st}. Veja os parecidos abaixo ou conte o que você procura.</p></div>`
+          : `<div class="preco-bloco so-cel">
           <p class="preco">${precoHTML(p)}</p>
           ${taxas.length ? `<p class="taxas">${taxas.map(t => `<span>${t}</span>`).join("")}</p>` : ""}
           ${p.fin === "venda" ? `<a class="fin-link" href="#/financiamento?imovel=${p.id}">Quer financiar? Simule com a Brietzke</a>` : ""}
-        </div>
+        </div>`}
         <dl class="ficha">${ficha.map(([ic, t, v]) => `<div><dt>${ic}${t}</dt><dd>${v}</dd></div>`).join("")}</dl>
         <section class="bloco" aria-labelledby="t-desc"><h2 id="t-desc">Sobre o imóvel</h2><p>${esc(p.desc)}</p></section>
         <section class="bloco" aria-labelledby="t-carac"><h2 id="t-carac">O que tem</h2><ul class="carac">${p.carac.map(c => `<li>${esc(c)}</li>`).join("")}</ul></section>
         <section class="bloco" aria-labelledby="t-loc"><h2 id="t-loc">Localização</h2><div class="mapa pequeno" id="mapa-imovel"></div><p class="nota-mapa">${esc(local(p))}. Localização aproximada: o endereço exato é passado no atendimento.</p></section>
         <section class="bloco so-cel" aria-labelledby="t-corretor"><h2 id="t-corretor">Quem atende</h2>
           <div class="corretor"><img src="assets/brietzke-b.webp" alt="" width="56" height="56"><div><strong>Brietzke Gestor Imobiliário</strong><span>${CONTATO.creci}</span></div>
-            <div class="btns"><button class="btn btn-linha" type="button" data-duvida="${p.id}">Tirar dúvida</button><button class="btn btn-linha" type="button" data-ligar>${I.tel}Ligar</button></div></div>
+            <div class="btns">${fechado ? `<button class="btn btn-linha" type="button" data-parecido="${p.id}">Quero um parecido</button>` : `<button class="btn btn-linha" type="button" data-duvida="${p.id}">Tirar dúvida</button>`}<button class="btn btn-linha" type="button" data-ligar>${I.tel}Ligar</button></div></div>
           <p class="codigo">Código do imóvel: ${p.id}</p>
         </section>
       </div>
-      <aside class="lateral" aria-label="Valor e contato">
+      ${fechado ? `<aside class="lateral" aria-label="Contato">
+        <p class="preco">${PALAVRA[p.st]}</p>
+        <p class="taxas">Este imóvel já foi ${p.st}.</p>
+        <div class="btns"><button class="btn btn-bronze" type="button" data-parecido="${p.id}">${I.wa}Quero um imóvel parecido</button></div>
+        <p class="codigo">Código do imóvel: ${p.id}. ${CONTATO.creci}</p>
+      </aside>` : `<aside class="lateral" aria-label="Valor e contato">
         <p class="preco">${precoHTML(p)}</p>
         ${taxas.length ? `<p class="taxas">${taxas.map(t => `<span>${t}</span>`).join("")}</p>` : ""}
         <div class="btns">
@@ -1272,23 +1389,26 @@ function vImovel(r) {
         </div>
         ${p.fin === "venda" ? `<a class="fin-link" href="#/financiamento?imovel=${p.id}">Quer financiar? Simule com a Brietzke</a>` : ""}
         <p class="codigo">Código do imóvel: ${p.id}. ${CONTATO.creci}</p>
-      </aside>
+      </aside>`}
     </div>
 
     ${similares.length ? `<section class="secao" aria-labelledby="t-sim"><div class="secao-cab"><h2 id="t-sim">Parecidos com este</h2></div><div class="trilho">${similares.map(x => cartao(x)).join("")}</div></section>` : ""}
   </div>
   ${rodape()}`;
 
-  $("#acao").innerHTML = `${btnFav(p)}<button class="btn btn-bronze" type="button" data-visita="${p.id}">${I.wa}Agendar visita pelo WhatsApp</button>`;
+  $("#acao").classList.toggle("so-um", fechado);
+  $("#acao").innerHTML = fechado
+    ? `<button class="btn btn-bronze" type="button" data-parecido="${p.id}">${I.wa}Quero um imóvel parecido</button>`
+    : `${btnFav(p)}<button class="btn btn-bronze" type="button" data-visita="${p.id}">${I.wa}Agendar visita pelo WhatsApp</button>`;
 
   const trilhoSlides = $("#slides"), cont = $("#contador");
   trilhoSlides.addEventListener("scroll", () => {
     const i = Math.round(trilhoSlides.scrollLeft / trilhoSlides.clientWidth);
-    cont.textContent = `${i + 1} de ${VISTAS.length}`;
+    cont.textContent = `${i + 1} de ${n}`;
   }, { passive: true });
   $$("[data-abrir]").forEach(b => b.addEventListener("click", () => abrirVisor(p, +b.dataset.abrir)));
   const lat = $("[data-fav-lateral]");
-  lat.addEventListener("click", () => { alternarFav(p.id); lat.setAttribute("aria-pressed", ehFav(p.id)); $("span", lat).textContent = ehFav(p.id) ? "Guardado nos favoritos" : "Guardar nos favoritos"; });
+  if (lat) lat.addEventListener("click", () => { alternarFav(p.id); lat.setAttribute("aria-pressed", ehFav(p.id)); $("span", lat).textContent = ehFav(p.id) ? "Guardado nos favoritos" : "Guardar nos favoritos"; });
 
   const el = $("#mapa-imovel");
   if ("IntersectionObserver" in window) {
@@ -1299,16 +1419,16 @@ function vImovel(r) {
 
 /* visor de imagens */
 const visor = $("#visor"), visorSlides = $("#visor-slides");
-let visorTotal = 0;
+let visorTotal = 0, visorP = null;
 function abrirVisor(p, i) {
-  visorTotal = VISTAS.length;
-  visorSlides.innerHTML = VISTAS.map((v, k) => `<div class="slide" role="group" aria-label="${k + 1} de ${VISTAS.length}: ${v}">${arte(p, k)}</div>`).join("");
+  visorTotal = nImg(p); visorP = p;
+  visorSlides.innerHTML = Array.from({ length: visorTotal }, (_, k) => `<div class="slide" role="group" aria-label="${k + 1} de ${visorTotal}: ${nomeImg(p, k)}">${arte(p, k)}</div>`).join("");
   visor.showModal();
   requestAnimationFrame(() => { visorSlides.scrollTo({ left: i * visorSlides.clientWidth, behavior: "instant" }); contarVisor(); });
 }
 function contarVisor() {
   const i = Math.round(visorSlides.scrollLeft / Math.max(1, visorSlides.clientWidth));
-  $("#visor-cont").textContent = `${i + 1} de ${visorTotal}: ${VISTAS[i] || ""}`;
+  $("#visor-cont").textContent = `${i + 1} de ${visorTotal}: ${visorP ? nomeImg(visorP, i) || "" : ""}`;
 }
 visorSlides.addEventListener("scroll", contarVisor, { passive: true });
 function moverVisor(d) {
@@ -1323,7 +1443,7 @@ visor.addEventListener("keydown", e => { if (e.key === "ArrowRight") moverVisor(
 /* favoritos */
 function vFavoritos() {
   document.title = "Favoritos | Brietzke";
-  const lista = favs.map(porId).filter(Boolean);
+  const lista = favs.map(porId).filter(visivel);
   app.innerHTML = `
   <div class="wrap">
     <div class="pagina" style="max-width:none">
@@ -1484,6 +1604,194 @@ function vQuem() {
   ${rodape()}`;
 }
 
+function parecidos(p) {
+  const l = ativos().filter(x => x.id !== p.id && x.fin === p.fin);
+  const pontos = x => (x.tipo === p.tipo ? 2 : 0) + (x.bairro === p.bairro ? 1 : 0);
+  return l.filter(x => pontos(x) > 0).sort((a, b) => pontos(b) - pontos(a)).slice(0, 3);
+}
+function vIndisponivel(p) {
+  document.title = "Imóvel indisponível | Brietzke";
+  const sim = parecidos(p);
+  app.innerHTML = `<div class="wrap"><div class="pagina vazio" style="max-width:640px"><h1>Este imóvel já foi ${p.st}</h1><p>O ${esc(titulo(p).toLowerCase())} em ${esc(bairroNome(p))} não está mais disponível. Veja os parecidos ou conte o que você procura.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-bronze" type="button" data-parecido="${p.id}">${I.wa}Quero um imóvel parecido</button><a class="btn btn-linha" href="#/imoveis?fin=${p.fin}">Ver imóveis</a></div></div>
+    ${sim.length ? `<section class="secao" style="padding-top:8px" aria-labelledby="t-sim"><div class="secao-cab"><h2 id="t-sim">Parecidos com este</h2></div><div class="trilho">${sim.map(x => cartao(x)).join("")}</div></section>` : ""}
+  </div>${rodape()}`;
+}
+
+/* painel: demonstração de como cadastrar */
+const CIDADES = ["Santo André", "São Bernardo do Campo", "São Caetano do Sul", "Diadema", "Mauá", "São Paulo"];
+const ICONE_OK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+const ICONE_FOTO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>';
+let proximoId = 5001;
+const slug = t => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+function topoPainel() {
+  return `<div class="pn-topo"><div class="wrap"><img src="assets/brietzke-b.webp" alt="" width="32" height="32"><strong>Painel</strong><a href="#/">Ver o site</a></div></div>`;
+}
+function vPainel(r) {
+  document.title = "Painel | Brietzke";
+  const tela = r.q.tela || "lista";
+  if (tela === "novo") return painelNovo();
+  if (tela === "ok") return painelOk(porId(r.q.id));
+  app.innerHTML = `${topoPainel()}
+  <div class="wrap"><div class="pn">
+    <h1>Imóveis</h1>
+    <p class="provisorio pn-demo"><strong>Demonstração.</strong> O painel de verdade terá estes mesmos campos. Aqui no protótipo, o que você cadastrar aparece no site só neste aparelho e some quando você fechar a página.</p>
+    <a class="btn btn-bronze pn-novo" href="#/painel?tela=novo">Cadastrar imóvel</a>
+    <ul class="pn-lista">${IMOVEIS.map(p => `<li>
+      <div class="mini">${arte(p)}</div>
+      <div><b>${esc(titulo(p))}</b><small>${esc(bairroNome(p))}, ${p.st ? PALAVRA[p.st].toLowerCase() : precoTexto(p)}</small></div>
+      <span class="st ${p.st ? "" : "ok"}">${p.st ? (p.selo ? "Com selo" : "Fora do site") : "No site"}</span>
+      <a class="cobre" href="#/imovel/${p.id}" aria-label="Ver ${esc(titulo(p))} no site"></a>
+    </li>`).join("")}</ul>
+  </div></div>`;
+}
+function painelNovo() {
+  const fotos = [];
+  app.innerHTML = `${topoPainel()}
+  <div class="wrap"><div class="pn">
+    <h1>Cadastrar imóvel</h1>
+    <form id="form-pn" novalidate>
+      <div class="pn-grupo" style="border-top:0;padding-top:0;margin-top:18px">
+        <h2>Fotos</h2>
+        <p class="ajuda">A primeira é a capa. Toque numa foto para ela virar a capa.</p>
+        <input class="sr" type="file" id="pn-arquivos" accept="image/*" multiple aria-describedby="e-fotos">
+        <label class="add-fotos" for="pn-arquivos">${ICONE_FOTO}Adicionar fotos<small>Da galeria ou da câmera</small></label>
+        <div class="fotos-grade" id="pn-fotos"></div>
+        <small class="erro-campo" id="e-fotos"></small>
+      </div>
+
+      <div class="pn-grupo">
+        <h2>O que é</h2>
+        <div class="radios"><label><input type="radio" name="fin" value="venda" checked><span>Venda</span></label><label><input type="radio" name="fin" value="aluguel"><span>Aluguel</span></label></div>
+        <label class="campo"><span>Tipo</span><select name="tipo">${Object.entries(TIPOS).map(([k, v]) => opt(k, v, "apartamento")).join("")}</select></label>
+      </div>
+
+      <div class="pn-grupo">
+        <h2>Onde fica</h2>
+        <label class="campo"><span>Cidade</span><select name="cidade">${CIDADES.map(c => opt(c, c, "Santo André")).join("")}</select></label>
+        <label class="campo"><span>Bairro</span><input name="bairro" list="pn-bairros" placeholder="Ex.: Vila Bastos" aria-describedby="e-bairro"><small class="erro-campo" id="e-bairro"></small></label>
+        <datalist id="pn-bairros">${Object.values(BAIRROS).map(b => `<option value="${b.n}">`).join("")}</datalist>
+        <label class="campo"><span>Endereço (só a Brietzke vê)</span><input name="endereco" placeholder="Rua e número"></label>
+      </div>
+
+      <div class="pn-grupo">
+        <h2>Valores</h2>
+        <label class="campo"><span id="pn-rotulo-valor">Valor de venda (R$)</span><input name="valor" inputmode="numeric" placeholder="Ex.: 450.000" aria-describedby="e-pvalor"><small class="erro-campo" id="e-pvalor"></small></label>
+        <div class="dupla" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <label class="campo"><span>Condomínio (R$)</span><input name="cond" inputmode="numeric"></label>
+          <label class="campo"><span>IPTU (R$)</span><input name="iptu" inputmode="numeric"></label>
+        </div>
+      </div>
+
+      <div class="pn-grupo">
+        <h2>Tamanho</h2>
+        <label class="campo"><span>Área (m²)</span><input name="area" inputmode="numeric" placeholder="Ex.: 85" aria-describedby="e-parea"><small class="erro-campo" id="e-parea"></small></label>
+        <div class="tres" data-para="casa">
+          <label class="campo"><span>Quartos</span><input name="quartos" inputmode="numeric"></label>
+          <label class="campo"><span>Suítes</span><input name="suites" inputmode="numeric"></label>
+          <label class="campo"><span>Banheiros</span><input name="banheiros" inputmode="numeric"></label>
+        </div>
+        <div class="tres" data-para="galpao" hidden>
+          <label class="campo"><span>Pé-direito (m)</span><input name="pe" inputmode="decimal"></label>
+          <label class="campo"><span>Docas</span><input name="docas" inputmode="numeric"></label>
+          <label class="campo"><span>Energia</span><input name="energia" placeholder="150 kVA"></label>
+        </div>
+        <label class="campo" data-sem="terreno"><span>Vagas</span><input name="vagas" inputmode="numeric"></label>
+      </div>
+
+      <div class="pn-grupo">
+        <h2>Descrição</h2>
+        <label class="campo"><span>Texto do anúncio</span><textarea name="desc" rows="4" placeholder="Conte como é o imóvel, o que tem perto…"></textarea></label>
+        <label class="campo"><span>Itens, separados por vírgula</span><input name="itens" placeholder="Piscina, Churrasqueira, Portaria 24 h"></label>
+      </div>
+
+      <div class="pn-grupo">
+        <h2>Onde aparece</h2>
+        <label class="chave"><span><b>Destaque na página inicial</b><small>Aparece primeiro, logo na entrada do site</small></span><input type="checkbox" name="destaque"></label>
+        <fieldset><legend>Situação</legend><div class="radios coluna">
+          <label><input type="radio" name="st" value="" checked><span>Disponível</span></label>
+          <label><input type="radio" name="st" value="fora"><span>Vendido ou alugado: sai do site</span></label>
+          <label><input type="radio" name="st" value="selo"><span>Vendido ou alugado: fica com selo</span></label>
+        </div></fieldset>
+      </div>
+
+      <div class="pn-publicar"><button class="btn btn-bronze" type="submit">Publicar no site</button></div>
+    </form>
+  </div></div>`;
+
+  const f = $("#form-pn"), grade = $("#pn-fotos");
+  const desenharFotos = () => {
+    grade.innerHTML = fotos.map((u, i) => `<div class="mini-foto"><button type="button" data-capa="${i}" aria-label="${i === 0 ? "Foto da capa" : `Usar a foto ${i + 1} como capa`}" style="border:0;padding:0;width:100%;height:100%;background:none"><img src="${u}" alt=""></button>${i === 0 ? '<span class="capa">Capa</span>' : ""}<button class="tirar" type="button" data-tirar="${i}" aria-label="Tirar a foto ${i + 1}">${I.fechar}</button></div>`).join("");
+  };
+  $("#pn-arquivos").addEventListener("change", e => {
+    [...e.target.files].slice(0, 20 - fotos.length).forEach(arq => fotos.push(URL.createObjectURL(arq)));
+    e.target.value = ""; desenharFotos(); $("#e-fotos").textContent = "";
+  });
+  grade.addEventListener("click", e => {
+    const capa = e.target.closest("[data-capa]"), tirar = e.target.closest("[data-tirar]");
+    if (tirar) { fotos.splice(+tirar.dataset.tirar, 1); desenharFotos(); }
+    else if (capa && +capa.dataset.capa > 0) { const [x] = fotos.splice(+capa.dataset.capa, 1); fotos.unshift(x); desenharFotos(); }
+  });
+  const ajustarTipo = () => {
+    const t = f.tipo.value;
+    $("[data-para=casa]", f).hidden = ["galpao", "terreno", "comercial"].includes(t);
+    $("[data-para=galpao]", f).hidden = t !== "galpao";
+    $("[data-sem=terreno]", f).hidden = t === "terreno";
+  };
+  f.tipo.addEventListener("change", ajustarTipo);
+  $$("input[name=fin]", f).forEach(x => x.addEventListener("change", () => { $("#pn-rotulo-valor").textContent = f.fin.value === "venda" ? "Valor de venda (R$)" : "Aluguel por mês (R$)"; }));
+  ["valor", "cond", "iptu"].forEach(k => f[k].addEventListener("blur", () => { const n = soNumeros(f[k].value); f[k].value = n ? num.format(n) : ""; }));
+
+  f.addEventListener("submit", e => {
+    e.preventDefault();
+    const erros = [];
+    const marcar = (id, msg, campo) => { $("#" + id).textContent = msg; if (campo) campo.setAttribute("aria-invalid", msg ? "true" : "false"); if (msg) erros.push(campo || $("#pn-arquivos")); };
+    marcar("e-fotos", fotos.length ? "" : "Adicione pelo menos uma foto.");
+    marcar("e-bairro", f.bairro.value.trim() ? "" : "Informe o bairro.", f.bairro);
+    marcar("e-pvalor", soNumeros(f.valor.value) ? "" : "Informe o valor.", f.valor);
+    marcar("e-parea", soNumeros(f.area.value) ? "" : "Informe a área.", f.area);
+    if (erros.length) { erros[0].focus(); if (erros[0].id === "pn-arquivos") $(".add-fotos").scrollIntoView({ block: "center" }); return; }
+
+    const nomeB = f.bairro.value.trim(), cid = f.cidade.value;
+    let chave = Object.keys(BAIRROS).find(k => BAIRROS[k].n.toLowerCase() === nomeB.toLowerCase() && (BAIRROS[k].cid || "Santo André") === cid);
+    if (!chave) {
+      chave = slug(nomeB + (cid === "Santo André" ? "" : "-" + cid));
+      const centro = { "Santo André": [-23.6575, -46.5330], "São Bernardo do Campo": [-23.6914, -46.5646], "São Caetano do Sul": [-23.6229, -46.5548], "Diadema": [-23.6861, -46.6228], "Mauá": [-23.6677, -46.4613], "São Paulo": [-23.5505, -46.6333] }[cid];
+      BAIRROS[chave] = { n: nomeB, cid: cid === "Santo André" ? undefined : cid, c: centro };
+    }
+    const nn = k => soNumeros(f[k].value);
+    const st = f.st.value;
+    const novo = {
+      id: "BZ-" + (proximoId++), fin: f.fin.value, tipo: f.tipo.value, bairro: chave, preco: nn("valor"), cond: nn("cond") || undefined, iptu: nn("iptu") || undefined,
+      area: nn("area"), quartos: nn("quartos"), suites: nn("suites"), banheiros: nn("banheiros"), vagas: nn("vagas"),
+      pe: f.pe.value.trim() || undefined, docas: nn("docas"), energia: f.energia.value.trim() || "Não informada",
+      nome: "Imóvel comercial", novo: true, destaque: f.destaque.checked, fotos: fotos.slice(),
+      carac: f.itens.value.split(",").map(x => x.trim()).filter(Boolean),
+      desc: f.desc.value.trim() || "Fale com a Brietzke para saber mais sobre este imóvel."
+    };
+    if (novo.tipo === "galpao" && !novo.pe) novo.pe = "—";
+    if (st) { novo.st = novo.fin === "venda" ? "vendido" : "alugado"; novo.selo = st === "selo"; }
+    IMOVEIS.unshift(novo);
+    location.hash = "#/painel?tela=ok&id=" + novo.id;
+  });
+}
+function painelOk(p) {
+  if (!p) { location.hash = "#/painel"; return; }
+  const noSite = !p.st || p.selo;
+  app.innerHTML = `${topoPainel()}
+  <div class="wrap"><div class="pn pn-ok">
+    <div class="marca-ok">${ICONE_OK}</div>
+    <h1>Publicado</h1>
+    <p>${esc(titulo(p))} em ${esc(bairroNome(p))}${noSite ? (p.destaque ? ", em destaque na página inicial." : ".") : ", fora do site."}</p>
+    <p>No site de verdade, ele aparece em 1 a 2 minutos.</p>
+    <div class="btns">
+      ${noSite ? `<a class="btn btn-bronze" href="#/imovel/${p.id}">Ver no site</a>` : ""}
+      <a class="btn btn-linha" href="#/">Ver a página inicial</a>
+      <a class="btn btn-linha" href="#/painel?tela=novo">Cadastrar outro</a>
+    </div>
+  </div></div>`;
+}
+
 function vNaoEncontrada() {
   document.title = "Página não encontrada | Brietzke";
   app.innerHTML = `<div class="wrap"><div class="pagina vazio"><h1>Este imóvel não está mais aqui</h1><p>Ele pode ter sido vendido ou alugado. Veja os imóveis disponíveis ou fale com a Brietzke.</p><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn btn-bronze" href="#/imoveis?fin=venda">Ver imóveis</a><button class="btn btn-linha" type="button" data-wa="geral">${I.wa}Falar no WhatsApp</button></div></div></div>${rodape()}`;
@@ -1500,6 +1808,7 @@ document.addEventListener("click", e => {
   if (t.matches("[data-wa]")) return abrirWa(msgGeral());
   if (t.matches("[data-visita]")) return abrirWa(msgVisita(porId(t.dataset.visita)));
   if (t.matches("[data-duvida]")) return abrirWa(msgDuvida(porId(t.dataset.duvida)));
+  if (t.matches("[data-parecido]")) { const x = porId(t.dataset.parecido); return abrirWa(`Olá! Vi no site que o imóvel ${x.id} (${titulo(x)} em ${bairroNome(x)}) já foi ${x.st}. Procuro um imóvel parecido.`); }
   if (t.matches("[data-ligar]")) return aviso(`No site oficial, liga para ${CONTATO.tel}`);
   if (t.matches("[data-em-breve]")) return aviso("Essa página entra no site oficial");
   if (t.matches("[data-fechar]")) return t.closest("dialog").close();
