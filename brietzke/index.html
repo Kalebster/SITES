@@ -241,6 +241,8 @@ body.com-acao .abas{display:none}
 .slides::-webkit-scrollbar{display:none}
 .slide{flex:0 0 100%;scroll-snap-align:start;aspect-ratio:4/3;border:0;padding:0;background:var(--bg-2)}
 .slide svg{width:100%;height:100%}
+.btn-video{position:absolute;left:12px;bottom:12px;z-index:2;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px 0 12px;border:0;border-radius:999px;background:rgba(23,19,15,.85);color:var(--texto);font-size:15px}
+.btn-video svg{width:20px;height:20px;color:var(--bronze-claro)}
 .gal-sobre{position:absolute;inset:12px 12px auto 12px;display:flex;justify-content:space-between;pointer-events:none}
 .gal-sobre > *{pointer-events:auto}
 .gal-sobre .grupo{display:flex;gap:8px}
@@ -607,7 +609,7 @@ const TIPOS = {
 };
 
 const IMOVEIS = [
-  { id:"BZ-1042", fin:"venda", tipo:"apartamento", bairro:"vila-bastos", preco:780000, cond:980, iptu:210, area:98, quartos:3, suites:1, banheiros:2, vagas:2, novo:true,
+  { id:"BZ-1042", fin:"venda", tipo:"apartamento", bairro:"vila-bastos", preco:780000, cond:980, iptu:210, area:98, quartos:3, suites:1, banheiros:2, vagas:2, novo:true, video:"exemplo",
     carac:["Varanda gourmet","Piscina","Academia","Portaria 24 h","Salão de festas"],
     desc:"Apartamento de 98 m² em rua tranquila da Vila Bastos, a poucos minutos do centro. Sala ampla integrada à varanda gourmet, três quartos (um suíte) e duas vagas cobertas. O condomínio tem piscina, academia e portaria 24 horas." },
   { id:"BZ-1043", fin:"venda", tipo:"apartamento", bairro:"campestre", preco:425000, cond:620, iptu:120, area:62, quartos:2, suites:0, banheiros:1, vagas:1,
@@ -646,7 +648,7 @@ const IMOVEIS = [
   { id:"BZ-2024", fin:"aluguel", tipo:"comercial", nome:"Salão comercial", bairro:"vila-gilda", preco:6500, iptu:300, area:180, quartos:0, suites:0, banheiros:2, vagas:4,
     carac:["Frente para avenida","Mezanino"],
     desc:"Salão comercial de 180 m² com frente para avenida movimentada, mezanino e quatro vagas na frente." },
-  { id:"BZ-3002", fin:"aluguel", tipo:"galpao", bairro:"utinga", preco:28000, iptu:2100, area:1200, quartos:0, suites:0, banheiros:3, vagas:8, pe:10, docas:2, energia:"150 kVA", novo:true,
+  { id:"BZ-3002", fin:"aluguel", tipo:"galpao", bairro:"utinga", preco:28000, iptu:2100, area:1200, quartos:0, suites:0, banheiros:3, vagas:8, pe:10, docas:2, energia:"150 kVA", novo:true, video:"exemplo",
     carac:["Pátio de manobra","Escritórios","Vestiários","Acesso para carreta"],
     desc:"Galpão de 1.200 m² em Utinga, com pé-direito de 10 m, duas docas, escritórios e vestiários. Acesso para carretas." },
   { id:"BZ-3005", fin:"aluguel", tipo:"galpao", bairro:"casa-branca", preco:15500, iptu:1100, area:650, quartos:0, suites:0, banheiros:2, vagas:4, pe:8, docas:1, energia:"75 kVA",
@@ -714,6 +716,7 @@ const I = {
   mapa:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 4L3.5 6v14L9 18l6 2 5.5-2V4L15 6zM9 4v14M15 6v14"/></svg>',
   wa:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4.5 19.5l1.2-3.7A8 8 0 1 1 8.4 18.6z"/><path d="M9.2 8.6c.2-.4.5-.4.8-.4h.5c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .4-.1.6l-.5.6c.6 1.1 1.5 2 2.6 2.6l.6-.5c.2-.1.4-.2.6-.1l1.5.6c.3.1.4.3.4.5v.5c0 .3 0 .6-.4.8-.6.4-1.5.6-2.4.2a9 9 0 0 1-4.6-4.6c-.4-.9-.2-1.8.2-2.4z"/></svg>',
   tel:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 5.5a2 2 0 0 1 2-2z"/></svg>',
+  play:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5z" fill="currentColor"/></svg>',
   fechar:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>'
 };
 
@@ -929,7 +932,7 @@ function cartao(p, nivel = "h3") {
   </article>`;
   return `<article class="card">
     <div class="card-img">${arte(p)}
-      <div class="etiquetas"><span class="etq">${p.fin === "venda" ? "Venda" : "Aluguel"}</span>${p.novo ? '<span class="etq novo">Novo</span>' : ""}</div>
+      <div class="etiquetas"><span class="etq">${p.fin === "venda" ? "Venda" : "Aluguel"}</span>${p.novo ? '<span class="etq novo">Novo</span>' : ""}${p.video ? '<span class="etq">Vídeo</span>' : ""}</div>
       ${btnFav(p)}
       ${selo_ilustr(p)}
     </div>
@@ -1348,6 +1351,7 @@ function vImovel(r) {
         </div>
       </div>
       <span class="contador" id="contador" aria-hidden="true">1 de ${n}</span>
+      ${p.video ? `<button class="btn-video" type="button" data-video="${p.id}">${I.play}Ver vídeo</button>` : ""}
     </div>
 
     <div class="imovel-corpo">
@@ -1703,6 +1707,7 @@ function painelNovo() {
         <h2>Descrição</h2>
         <label class="campo"><span>Texto do anúncio</span><textarea name="desc" rows="4" placeholder="Conte como é o imóvel, o que tem perto…"></textarea></label>
         <label class="campo"><span>Itens, separados por vírgula</span><input name="itens" placeholder="Piscina, Churrasqueira, Portaria 24 h"></label>
+        <label class="campo"><span>Link do vídeo (opcional)</span><input name="video" type="url" inputmode="url" placeholder="Link do Reels ou do YouTube"></label>
       </div>
 
       <div class="pn-grupo">
@@ -1767,7 +1772,8 @@ function painelNovo() {
       pe: f.pe.value.trim() || undefined, docas: nn("docas"), energia: f.energia.value.trim() || "Não informada",
       nome: "Imóvel comercial", novo: true, destaque: f.destaque.checked, fotos: fotos.slice(),
       carac: f.itens.value.split(",").map(x => x.trim()).filter(Boolean),
-      desc: f.desc.value.trim() || "Fale com a Brietzke para saber mais sobre este imóvel."
+      desc: f.desc.value.trim() || "Fale com a Brietzke para saber mais sobre este imóvel.",
+      video: f.video.value.trim() || undefined
     };
     if (novo.tipo === "galpao" && !novo.pe) novo.pe = "—";
     if (st) { novo.st = novo.fin === "venda" ? "vendido" : "alugado"; novo.selo = st === "selo"; }
@@ -1810,6 +1816,11 @@ document.addEventListener("click", e => {
   if (t.matches("[data-duvida]")) return abrirWa(msgDuvida(porId(t.dataset.duvida)));
   if (t.matches("[data-parecido]")) { const x = porId(t.dataset.parecido); return abrirWa(`Olá! Vi no site que o imóvel ${x.id} (${titulo(x)} em ${bairroNome(x)}) já foi ${x.st}. Procuro um imóvel parecido.`); }
   if (t.matches("[data-ligar]")) return aviso(`No site oficial, liga para ${CONTATO.tel}`);
+  if (t.matches("[data-video]")) {
+    const v = porId(t.dataset.video).video;
+    if (/^https?:\/\//.test(v)) { window.open(v, "_blank", "noopener"); return; }
+    return aviso("No site oficial, abre o vídeo do imóvel (Reels ou YouTube)");
+  }
   if (t.matches("[data-em-breve]")) return aviso("Essa página entra no site oficial");
   if (t.matches("[data-fechar]")) return t.closest("dialog").close();
   if (t.matches("[data-voltar]")) {
